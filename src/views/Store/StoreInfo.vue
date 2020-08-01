@@ -1,6 +1,6 @@
 <!-- 门店信息 -->
 <template>
-<div class=''></div>
+<div class=''>11111</div>
 </template>
 
 <script>
