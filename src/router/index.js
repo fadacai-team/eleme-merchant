@@ -9,15 +9,28 @@ import OrderRouter from './order'
 import MarketingRouter from './marketing'
 
 Vue.use(VueRouter)
-
 const baseRoutes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/index',
+    name: 'Home',
+    component: Home
   }
 ];
-const routes = baseRoutes.concat(ProductionRouter,DataRouter,CustomerRouter,FinanceRouter,OrderRouter,MarketingRouter);
+
+//其他未定义的路由都会到首页
+const unknowRouter = [
+  {
+    path: '/*',
+    name: 'Home',
+    component: Home
+  }
+]
+const routes = baseRoutes.concat(ProductionRouter,DataRouter,CustomerRouter,FinanceRouter,OrderRouter,MarketingRouter,unknowRouter);
 export default new VueRouter({
     mode: 'history',//去除访问路径“#”
     routes,

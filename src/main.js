@@ -5,8 +5,33 @@ import store from './store'
 import axios from './common/myaxios'
 
 // element-ui
-import { Button, Select,Menu,MenuItem,MenuItemGroup, } from 'element-ui';
-Vue.use(Button).use(Select).use(Menu).use(MenuItem).use(MenuItemGroup);
+import { 
+  Button, 
+  Select,
+  Menu,
+  MenuItem,
+  MenuItemGroup,
+  Header,
+  Aside,
+  Main,
+  Submenu,
+  Container,
+  Collapse,
+  Tag
+} from 'element-ui';
+Vue
+  .use(Button)
+  .use(Select)
+  .use(Menu)
+  .use(MenuItem)
+  .use(MenuItemGroup)
+  .use(Main)
+  .use(Aside)
+  .use(Header)
+  .use(Submenu)
+  .use(Container)
+  .use(Collapse)
+  .use(Tag)
 
 Vue.config.productionTip = false
 
