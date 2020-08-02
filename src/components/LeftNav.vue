@@ -65,6 +65,21 @@ export default {
                         {name:"顾客xx",router:"/customer/search"}
                     ]
                 },
+                {
+                    name:"门店",
+                    router:"/store",
+                    childList:[
+                        {name:"门店信息",router:"/store/info"}
+                    ]
+                },
+                {
+                    name:"营销",
+                    router:"/marketing",
+                    childList:[
+                        {name:"营销中心",router:"/marketing/center"},
+                        {name:"我的活动",router:"/marketing/activities"},
+                    ]
+                },
             ]
         };
     },

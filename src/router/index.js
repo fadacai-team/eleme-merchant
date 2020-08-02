@@ -7,6 +7,7 @@ import CustomerRouter from './customer'
 import FinanceRouter from './finance'
 import OrderRouter from './order'
 import MarketingRouter from './marketing'
+import StoreRouter from './store'
 
 Vue.use(VueRouter)
 const baseRoutes = [
@@ -30,7 +31,7 @@ const unknowRouter = [
     component: Home
   }
 ]
-const routes = baseRoutes.concat(ProductionRouter,DataRouter,CustomerRouter,FinanceRouter,OrderRouter,MarketingRouter,unknowRouter);
+const routes = baseRoutes.concat(StoreRouter,ProductionRouter,DataRouter,CustomerRouter,FinanceRouter,OrderRouter,MarketingRouter,unknowRouter);
 export default new VueRouter({
     mode: 'history',//去除访问路径“#”
     routes,

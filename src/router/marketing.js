@@ -1,8 +1,19 @@
 export default[
-    // {
-    //     path: '/xxx',
-    //     component: () => import ('../views/xxx/xxx.vue'),
-    //     name: 'Production',
-    // },
+    {
+        path: '/marketing',
+        component: () => import ('../views/Marketing/Center.vue'),
+        name: 'Center',
+    },
+    {
+        path: '/marketing/activities',
+        component: () => import ('../views/Marketing/Activities.vue'),
+        name: 'Activies',
+    },
+    {
+        path: '/marketing/center',
+        component: () => import ('../views/Marketing/Center.vue'),
+        name: 'Center',
+    }
+
     
 ]
