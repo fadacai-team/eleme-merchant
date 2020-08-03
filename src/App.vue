@@ -44,10 +44,13 @@ export default {
 }
 </script>
 <style lang='less' >
-html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img{
+html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,li,ol{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+ul,li,ol{
+  list-style: none;
 }
 #top-bar{
   background-color: #666;
