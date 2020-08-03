@@ -29,39 +29,24 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
   padding: 0;
   box-sizing: border-box;
 }
-a{
-  text-decoration: none;
+.clearfix {
+  *zoom: 1;
 }
-.clearfix::after{
-  content: "";
-  height: 0;
+.clearfix:before,
+.clearfix:after {
   display: block;
-  width: 100%;
-  visibility: hidden;
+  clear: both;
+  height: 0;
+  font-size: 0;
+  content: "";
 }
-ul,li,ol{
+ul,ol,li{
   list-style: none;
-}
-#top-bar{
-  background-color: #666;
 }
 a {
   text-decoration: none;
 }
 input {
   outline: none;
-}
-#app-body{
-  height: calc(100vh - 60px);
-  overflow-y: scroll;
-}
-#menu-btn{
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 1000;
-}
-li {
-  list-style: none;
 }
 </style>

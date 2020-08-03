@@ -86,13 +86,21 @@ export default {
           name: "营销",
           router: "/marketing",
           icon: "el-icon-s-marketing",
-          childList: [{ name: "demo", router: "/marketing/demo" }]
+          childList: [
+            {name:"营销中心",router:"/marketing/center"},
+            {name:"我的活动",router:"/marketin/activities"}
+          ]
         },
         {
           name: "数据",
           router: "/data",
           icon: "el-icon-s-data",
-          childList: [{ name: "demo", router: "/customer/demo" }]
+          childList: [                        
+            {name:"数据中心",router:"/datacenter"},
+            {name:"营销分析",router:"/mkAnalytics"},
+            {name:"数据下载",router:"/datadownload"},
+            {name:"行业复苏",router:"/recovery"}
+          ]
         },
         {
           name: "财务",
