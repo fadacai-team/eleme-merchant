@@ -11,7 +11,18 @@ export default {
     name:'',
     components: {},
     data() {
-        return {};
+        return {
+            orderList:[
+                {
+                    userInfo:{
+                        name:"",
+                        phone:"",
+                        vip:true,
+                        address:"",
+                    }
+                }
+            ]
+        };
     },
     computed: {},
     watch: {},
