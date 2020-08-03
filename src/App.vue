@@ -1,50 +1,30 @@
 <template>
   <div id="app">
-    <el-container>
-        <el-aside id="left-nav">
-          <leftnav></leftnav>
-        </el-aside>
-        <el-container>
-            <el-header id="top-bar">
-              <topbar></topbar>
-            </el-header>
-            <el-main id="app-body">
-              <router-view/>
-            </el-main>
-        </el-container>
-    </el-container>
+    <Bar />
+    <Menu />
   </div>
 </template>
 
 <script>
-import topbar from '@/components/TopBar'
-import leftnav from '@/components/LeftNav'
+import Bar from "@/components/layout/Bar.vue";
+import Menu from "@/components/layout/Menu.vue";
+
 export default {
-    name:'',
-    components: {
-      topbar,leftnav
-    },
-    data() {
-        return {
-        };
-    },
-    computed: {},
-    watch: {},
-    methods: {
-    },
-    created() {},
-    mounted() {},
-    beforeCreate() {},
-    beforeMount() {},
-    beforeUpdate() {},
-    updated() {},
-    beforeDestroy() {},
-    destroyed() {},
-    activated() {},
-}
+  name: "App",
+  components: {
+    Bar,
+    Menu
+  }
+};
 </script>
+
 <style lang='less' >
-html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,li,ol{
+#app {
+  font-size: 14px;
+  color: #6c5f57;
+  min-width: 960px;
+}
+html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -64,10 +44,12 @@ ul,li,ol{
 }
 #top-bar{
   background-color: #666;
+
+a {
+  text-decoration: none;
 }
-#left-nav{
-  height: 100vh;
-  width: auto !important;
+input {
+  outline: none;
 }
 #app-body{
   height: calc(100vh - 60px);
@@ -78,6 +60,7 @@ ul,li,ol{
   top: 10px;
   left: 10px;
   z-index: 1000;
+li {
+  list-style: none;
 }
-
 </style>
