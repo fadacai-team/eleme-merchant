@@ -56,7 +56,13 @@ export default {
           name: "订单",
           router: "/order",
           icon: "el-icon-s-order",
-          childList: [{ name: "demo", router: "/orders/demo" }]
+          childList: [
+              {name:"订单处理",router:"/orders/process"},
+              {name:"订单查询",router:"/orders/search"},
+              {name:"索赔中心",router:"/orders/property"},
+              {name:"订单设置",router:"/orders/setting"},
+              {name:"企业订单",router:"/orders/reservation"}
+          ]
         },
         {
           name: "商品",
@@ -98,7 +104,7 @@ export default {
           name: "门店",
           router: "/shop",
           icon: "el-icon-s-shop",
-          childList: [{ name: "demo", router: "/shop/demo" }]
+          childList: [{ name: "demo", router: "/shop/info" }]
         }
       ]
     };

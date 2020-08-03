@@ -44,7 +44,7 @@ ul,li,ol{
 }
 #top-bar{
   background-color: #666;
-
+}
 a {
   text-decoration: none;
 }
@@ -60,6 +60,7 @@ input {
   top: 10px;
   left: 10px;
   z-index: 1000;
+}
 li {
   list-style: none;
 }
