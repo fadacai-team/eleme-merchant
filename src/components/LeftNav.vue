@@ -80,6 +80,16 @@ export default {
                         {name:"我的活动",router:"/marketing/activities"},
                     ]
                 },
+                {
+                    name:"数据",
+                    router:"/data",
+                    childList:[
+                        {name:"数据中心",router:"/datacenter"},
+                        {name:"营销分析",router:"/mkAnalytics"},
+                        {name:"数据下载",router:"/datadownload"},
+                        {name:"行业复苏",router:"/recovery"},
+                    ]
+                },
             ]
         };
     },
