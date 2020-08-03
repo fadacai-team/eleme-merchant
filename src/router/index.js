@@ -5,7 +5,7 @@ import ProductionRouter from './production'
 import DataRouter from './data'
 import CustomerRouter from './customer'
 import FinanceRouter from './finance'
-import OrderRouter from './order'
+import OrderRouter from './orders'
 import MarketingRouter from './marketing'
 import StoreRouter from './store'
 

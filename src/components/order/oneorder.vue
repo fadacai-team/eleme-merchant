@@ -1,6 +1,9 @@
+
 <!-- 订单 -->
 <template>
-<div class=''></div>
+<div class='order'>
+
+</div>
 </template>
 
 <script>

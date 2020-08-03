@@ -50,11 +50,11 @@ export default {
                     name:"订单",
                     router:"/order",
                     childList:[
-                        {name:"订单处理",router:"/order/process"},
-                        {name:"订单查询",router:"/order/search"},
-                        {name:"索赔中心",router:"/order/property"},
-                        {name:"订单设置",router:"/order/setting"},
-                        {name:"企业订单",router:"/order/reservation"}
+                        {name:"订单处理",router:"/orders/process"},
+                        {name:"订单查询",router:"/orders/search"},
+                        {name:"索赔中心",router:"/orders/property"},
+                        {name:"订单设置",router:"/orders/setting"},
+                        {name:"企业订单",router:"/orders/reservation"}
                     ]
                 },
                 {
