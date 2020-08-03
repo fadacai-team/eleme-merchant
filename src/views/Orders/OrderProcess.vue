@@ -1,12 +1,18 @@
 <!-- 订单处理 -->
 <template>
-<div class=''>process</div>
+<div class='order-container'>
+    <order></order>
+    <order></order>
+</div>
 </template>
 
 <script>
+import order from '@/components/order/oneorder.vue'
 export default {
     name:'',
-    components: {},
+    components: {
+        order
+    },
     data() {
         return {};
     },
@@ -25,5 +31,8 @@ export default {
 }
 </script>
 <style lang='less'  scoped>
-
+.order-container{
+    max-width: 1220px;
+    margin:0 auto;
+}
 </style>

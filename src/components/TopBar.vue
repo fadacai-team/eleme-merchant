@@ -1,6 +1,7 @@
 <!--  -->
 <template>
 <div class=''>
+    <i class="el-icon-platform-eleme"></i>
 </div>
 </template>
 

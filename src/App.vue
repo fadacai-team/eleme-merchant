@@ -44,10 +44,23 @@ export default {
 }
 </script>
 <style lang='less' >
-html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img{
+html{
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+html,body,footer,div,ul,li,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+.clearfix::after{
+  content: "";
+  height: 0;
+  display: block;
+  width: 100%;
+  visibility: hidden;
 }
 #top-bar{
   background-color: #666;
@@ -55,6 +68,10 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img{
 #left-nav{
   height: 100vh;
   width: auto !important;
+}
+#app-body{
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
 }
 #menu-btn{
   position: absolute;

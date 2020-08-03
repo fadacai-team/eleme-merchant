@@ -17,7 +17,14 @@ import {
   Submenu,
   Container,
   Collapse,
-  Tag
+  Tag,
+  Divider,
+  Card,
+  Row,
+  Col,
+  CollapseItem,
+  Timeline,
+  TimelineItem
 } from 'element-ui';
 Vue
   .use(Button)
@@ -32,6 +39,13 @@ Vue
   .use(Container)
   .use(Collapse)
   .use(Tag)
+  .use(Divider)
+  .use(Card)
+  .use(Row)
+  .use(Col)
+  .use(CollapseItem)
+  .use(Timeline)
+  .use(TimelineItem)
 
 Vue.config.productionTip = false
 
