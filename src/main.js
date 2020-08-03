@@ -5,7 +5,8 @@ import store from './store'
 import axios from './common/myaxios'
 
 // element-ui
-import { 
+import {
+  Input, 
   Button, 
   Select,
   Menu,
@@ -27,6 +28,7 @@ import {
   TimelineItem
 } from 'element-ui';
 Vue
+  .use(Input)
   .use(Button)
   .use(Select)
   .use(Menu)

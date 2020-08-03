@@ -39,10 +39,10 @@
   </div>
 </template>
 <style lang="scss">
-      .search .el-input__inner {
-        // 修改 el-input 默认属性
-        border-radius: 16px;
-      }
+.search .el-input__inner {
+  // 修改 el-input 默认属性
+  border-radius: 16px;
+}
 </style>
 <style lang="scss" scoped>
 .bar {
@@ -70,10 +70,6 @@
       float: left;
       padding-top: 14px;
       width: 230px;
-      // /deep/ .el-input__inner {
-      //   // 修改 el-input 默认属性
-      //   border-radius: 16px;
-      // }
     }
     .shopname {
       float: left;
