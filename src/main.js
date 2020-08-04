@@ -28,6 +28,7 @@ import {
   Input,
 } from 'element-ui';
 Vue
+  .use(Input)
   .use(Button)
   .use(Select)
   .use(Menu)
