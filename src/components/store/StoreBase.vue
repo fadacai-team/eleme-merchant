@@ -60,9 +60,9 @@
         <div class="store-erweima">
             <p>门店二维码</p>
             <div class="store-erweima-img">
-                <!-- <div><img src="../../assets/images/20200803175200.png" alt=""><br><i class="el-icon-platform-eleme"></i></div>
-                <div><img src="../../assets/images/20200803175224.png" alt=""><br><i class="el-icon-bangzhu"></i></div>
-                <div><img src="../../assets/images/20200803175231.png" alt=""><br><i class="el-icon-chat-dot-round"></i></div> -->
+                <div><img src="../../assets/images/20200804160751.png" alt=""><br><i class="el-icon-platform-eleme"></i></div>
+                <div><img src="../../assets/images/20200804160803.png" alt=""><br><i class="el-icon-bangzhu"></i></div>
+                <div><img src="../../assets/images/20200804160817.png" alt=""><br><i class="el-icon-chat-dot-round"></i></div>
             </div>
             <div class="store-download">
                 <section><i class="el-icon-platform-eleme"></i>下载</section>
@@ -144,6 +144,9 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     align-items: center;
     border-bottom: 1px solid #ccc;
     margin-top: 6px;
+    span{
+        color: #000;
+    }
     .imgupdate{
         width: 100px;
         height: 100px;
@@ -156,6 +159,9 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     height: 100px;
     align-items: center;
     border-bottom: 1px solid #ccc;
+    p{
+        color: #000;
+    }
     b{
         font-weight: 500;
         width: 600px;
@@ -175,6 +181,9 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     align-items: center;
     border-bottom: 1px solid #ccc;
     background-color: #ddd;
+    p{
+        color: #000;
+    }
     b{
         font-weight: 500;
         width: 600px;
@@ -193,9 +202,13 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
+    p{
+        color: #000;
+    }
     .store-erweima-img{
         width: 600px;
         display: flex;
+        
         div{
             width: 90px;
             height: 90px;
