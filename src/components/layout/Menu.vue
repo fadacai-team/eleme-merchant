@@ -109,9 +109,9 @@ export default {
         },
         {
           name: "门店",
-          router: "/shop",
+          router: "/store",
           icon: "el-icon-s-shop",
-          childList: [{ name: "demo", router: "/shop/info" }]
+          childList: [{ name: "门店信息", router: "/store/info" }]
         }
       ]
     };
