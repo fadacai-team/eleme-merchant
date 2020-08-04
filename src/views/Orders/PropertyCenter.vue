@@ -9,8 +9,16 @@
             <header>索赔规则</header>
             <p>索赔金额=商户实收金额x100%</p>
             <p>物流原因退款的订单可索赔(特殊情况如:未使用蜂鸟配送、超过索赔时效等场景不可发起索赔)<el-button type="text" size="small">查阅详细规则</el-button></p>
-        </aside>
-
+        </aside>    
+        <el-table :data="tableData" border style="width: 100%">
+            <el-table-column prop="date" label="日期" width="180"></el-table-column>
+            <el-table-column prop="orderId" label="流水号" ></el-table-column>
+            <el-table-column prop="amount" label="金额" width="180"></el-table-column>
+            <el-table-column prop="" label="操作" width="176">
+                <el-button type="primary">发起</el-button>
+                <el-button>查看</el-button>
+            </el-table-column>
+        </el-table>
 
     </el-tab-pane>
 
@@ -43,18 +51,18 @@
         </el-select>
         </el-row>
         <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
-        <el-table-column prop="orderId" label="流水号" width="180"></el-table-column>
-        <el-table-column prop="amount" label="金额"></el-table-column>
-        <el-table-column label="状态">
-            <template slot-scope="scope">
-                {{scope.row.status | transformStatus}}
-            </template>
-        </el-table-column>
-        <el-table-column prop="" label="操作" width="176">
-            <el-button type="success">查看</el-button>
-            <el-button>编辑</el-button>
-        </el-table-column>
+            <el-table-column prop="date" label="日期" width="180"></el-table-column>
+            <el-table-column prop="orderId" label="流水号" width="180"></el-table-column>
+            <el-table-column prop="amount" label="金额" width="180"></el-table-column>
+            <el-table-column label="状态" >
+                <template slot-scope="scope">
+                    {{scope.row.status | transformStatus}}
+                </template>
+            </el-table-column>
+            <el-table-column prop="" label="操作" width="176">
+                <el-button>查看</el-button>
+                <el-button>编辑</el-button>
+            </el-table-column>
         </el-table>
     </el-tab-pane>
     </el-tabs>
