@@ -87,7 +87,7 @@ export default {
           icon: "el-icon-s-marketing",
           childList: [
             {name:"营销中心",router:"/marketing/center"},
-            {name:"我的活动",router:"/marketin/activities"}
+            {name:"我的活动",router:"/marketing/activities"}
           ]
         },
         {
@@ -109,9 +109,9 @@ export default {
         },
         {
           name: "门店",
-          router: "/shop",
+          router: "/store",
           icon: "el-icon-s-shop",
-          childList: [{ name: "demo", router: "/shop/info" }]
+          childList: [{ name: "门店信息", router: "/store/info" }]
         }
       ]
     };

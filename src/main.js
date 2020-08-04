@@ -41,6 +41,7 @@ import {
   OptionGroup,
   Upload,
   Dialog,
+  DatePicker
 } from 'element-ui';
 
 Vue
@@ -80,6 +81,7 @@ Vue
   .use(OptionGroup)
   .use(Upload)
   .use(Dialog)
+  .use(DatePicker)
 
 Vue.config.productionTip = false
 
