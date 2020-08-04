@@ -21,7 +21,6 @@ export default {
   components: {
     Bar,
     Menu,
-    left
   }
 };
 </script>
