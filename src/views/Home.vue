@@ -6,6 +6,8 @@
 export default {
   name: "Home",
   components: {},
-  data() {},
+  data() {
+    return{}
+  },
 };
 </script>

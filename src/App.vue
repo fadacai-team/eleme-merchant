@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <Bar />
-    <Menu />
+    <el-container>
+      <el-header><Bar /></el-header>
+      <el-container>
+        <el-aside width="200px"><Menu /></el-aside>
+        <el-main>
+          <router-view />
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 

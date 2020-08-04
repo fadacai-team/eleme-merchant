@@ -33,6 +33,7 @@ const unknowRouter = [
 ]
 const routes = baseRoutes.concat(StoreRouter,ProductionRouter,DataRouter,CustomerRouter,FinanceRouter,OrderRouter,MarketingRouter,unknowRouter);
 export default new VueRouter({
-    mode: 'history',//去除访问路径“#”
+    //去除访问路径“#”
+    mode: 'history',
     routes,
 });

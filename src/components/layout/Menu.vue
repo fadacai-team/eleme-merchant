@@ -10,7 +10,7 @@
     >
       <template v-for="(menu, index) in menulist">
         <el-menu-item
-          v-if="menu.childList.length == 0"
+          v-if="!menu.childList"
           :index="menu.router"
           :key="index"
         >
@@ -50,7 +50,6 @@ export default {
           name: "首页",
           router: "/index",
           icon: "el-icon-s-home",
-          childList: []
         },
         {
           name: "订单",
