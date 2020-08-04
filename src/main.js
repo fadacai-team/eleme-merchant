@@ -24,7 +24,10 @@ import {
   Col,
   CollapseItem,
   Timeline,
-  TimelineItem
+  TimelineItem,
+  TabPane,
+  Upload,
+  Dialog,
 } from 'element-ui';
 Vue
   .use(Button)
@@ -46,6 +49,9 @@ Vue
   .use(CollapseItem)
   .use(Timeline)
   .use(TimelineItem)
+  .use(TabPane)
+  .use(Upload)
+  .use(Dialog)
 
 Vue.config.productionTip = false
 

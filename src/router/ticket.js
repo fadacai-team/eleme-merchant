@@ -17,7 +17,7 @@ export default[
     {
         path: '/tickets/distribution',
         component: () => import ('../views/Tickets/Distribution.vue'),
-        name: 'distribution',
+        name: 'distribution ',
     },
     {
         path: '/tickets/combination',

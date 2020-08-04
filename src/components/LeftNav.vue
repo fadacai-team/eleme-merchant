@@ -59,7 +59,7 @@ export default {
                 },
                  {
                     name:"优惠券",
-                    router:"/customer",
+                    router:"/ticket",
                     childList:[
                         {name:"优惠券管理",router:"/tickets"},
                       
@@ -69,8 +69,9 @@ export default {
                     name:"顾客",
                     router:"/customer",
                     childList:[
-                        {name:"顾客管理",router:"/customer/process"},
-                        {name:"顾客xx",router:"/customer/search"}
+                        {name:"顾客管理",router:"/customer"},
+                        {name:"顾客画像",router:"/customer/behavior"},
+                        {name:"顾客评价",router:"/customer/evaluate"},
                     ]
                 },
                 {
