@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <Bar />
-    <Menu />
+    <el-container>
+      <el-header><Bar /></el-header>
+      <el-container>
+        <el-aside width="200px"><Menu /></el-aside>
+        <el-main>
+          <router-view />
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <script>
+import left from '@/components/LeftNav.vue';
 import Bar from "@/components/layout/Bar.vue";
 import Menu from "@/components/layout/Menu.vue";
 
@@ -13,7 +21,8 @@ export default {
   name: "App",
   components: {
     Bar,
-    Menu
+    Menu,
+    left
   }
 };
 </script>

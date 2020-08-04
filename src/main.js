@@ -5,7 +5,7 @@ import store from './store'
 import axios from './common/myaxios'
 
 // element-ui
-import { 
+import {
   Button, 
   Select,
   Menu,
@@ -24,7 +24,8 @@ import {
   Col,
   CollapseItem,
   Timeline,
-  TimelineItem
+  TimelineItem,
+  Input,
 } from 'element-ui';
 Vue
   .use(Button)
@@ -46,6 +47,7 @@ Vue
   .use(CollapseItem)
   .use(Timeline)
   .use(TimelineItem)
+  .use(Input)
 
 Vue.config.productionTip = false
 
