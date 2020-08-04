@@ -57,6 +57,14 @@ export default {
                         {name:"企业订单",router:"/orders/reservation"}
                     ]
                 },
+                 {
+                    name:"优惠券",
+                    router:"/customer",
+                    childList:[
+                        {name:"优惠券管理",router:"/tickets"},
+                      
+                    ]
+                },
                 {
                     name:"顾客",
                     router:"/customer",
