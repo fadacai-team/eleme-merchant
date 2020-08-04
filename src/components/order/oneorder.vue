@@ -42,8 +42,8 @@
                 <i class="el-icon-dish-1"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                <span>备餐事件 </span>
-                <span>3分41秒</span>
+                <span>备餐时间 </span>
+                <span>{{order.mealCompleteButton.prepareTime | secondToTime}}</span>
             </el-col>
         </el-row>
         <el-divider></el-divider>
@@ -155,6 +155,9 @@ export default {
         },
         formatMoney(money){
             return parseFloat(money).toFixed(2)
+        },
+        secondToTime(sec){
+            return parseInt(sec/60) + "分" + sec%60 + "秒";
         }
     },
     props:["order"],
