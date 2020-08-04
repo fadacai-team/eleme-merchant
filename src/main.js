@@ -38,7 +38,7 @@ import {
   Table,
   TableColumn,
   Option,
-  OptionGroup
+  OptionGroup,
 } from 'element-ui';
 
 Vue

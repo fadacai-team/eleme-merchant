@@ -39,6 +39,9 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
 .clearfix {
   *zoom: 1;
 }
+em,i{
+  font-style: normal;
+}
 .clearfix:before,
 .clearfix:after {
   display: block;
