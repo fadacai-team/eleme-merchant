@@ -4,7 +4,7 @@
       <el-header><Bar /></el-header>
       <el-container>
         <el-aside width="200px"><Menu /></el-aside>
-        <el-main>
+        <el-main id="app-body">
           <router-view />
         </el-main>
       </el-container>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import left from '@/components/LeftNav.vue';
 import Bar from "@/components/layout/Bar.vue";
 import Menu from "@/components/layout/Menu.vue";
 
@@ -22,7 +21,6 @@ export default {
   components: {
     Bar,
     Menu,
-    left
   }
 };
 </script>
