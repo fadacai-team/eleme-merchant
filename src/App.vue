@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import left from '@/components/LeftNav.vue';
 import Bar from "@/components/layout/Bar.vue";
 import Menu from "@/components/layout/Menu.vue";
 
