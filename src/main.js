@@ -26,7 +26,8 @@ import {
   Timeline,
   TimelineItem,
   Input,
-  Upload
+  Upload,
+  DatePicker
 } from 'element-ui';
 Vue
   .use(Input)
@@ -51,6 +52,7 @@ Vue
   .use(TimelineItem)
   .use(Input)
   .use(Upload)
+  .use(DatePicker)
 
 Vue.config.productionTip = false
 
