@@ -86,7 +86,6 @@ export default {
 <style lang='less'  scoped>
 .data-center {
     min-width: 920px;
-    background-color: rgb(208, 169, 169);
     .data-center-nav {
         width: 920px;
         margin: 0 auto;

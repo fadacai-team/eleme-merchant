@@ -26,6 +26,8 @@ import {
   Timeline,
   TimelineItem,
   Input,
+  Tabs,
+  TabPane
 } from 'element-ui';
 Vue
   .use(Input)
@@ -49,6 +51,8 @@ Vue
   .use(Timeline)
   .use(TimelineItem)
   .use(Input)
+  .use(Tabs)
+  .use(TabPane)
 
 Vue.config.productionTip = false
 

@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import left from '@/components/LeftNav.vue';
 import Bar from "@/components/layout/Bar.vue";
 import Menu from "@/components/layout/Menu.vue";
 
@@ -22,7 +21,6 @@ export default {
   components: {
     Bar,
     Menu,
-    left
   }
 };
 </script>
@@ -40,6 +38,9 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
 }
 .clearfix {
   *zoom: 1;
+}
+em,i{
+  font-style: normal;
 }
 .clearfix:before,
 .clearfix:after {
