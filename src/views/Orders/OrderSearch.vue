@@ -20,7 +20,7 @@
                     </span>
                     <el-dropdown-menu slot="dropdown">
                         <el-dropdown-item>
-                            <el-calendar style="width:500px" v-model="orderDate"></el-calendar>
+                            <el-calendar  :range="['2019-3-04', '2019-03-24']" style="width:500px" v-model="calenderDate"></el-calendar>
                         </el-dropdown-item>
                     </el-dropdown-menu>
                 </el-dropdown>
@@ -53,12 +53,18 @@ export default {
         return {
             orders:[],
             orderType:"全部",
-            orderDate:new Date(),
+            calenderDate:"",
+            orderDate:"",
             orderStatus:"全部",
         };
     },
     computed: {},
-    watch: {},
+    watch: {
+        calenderDate:function(date){
+            this.orderDate = ""
+            //用date做筛选
+        }
+    },
     methods: {},
     created() {},
     mounted() {

@@ -34,7 +34,11 @@ import {
   DropdownMenu,
   Calendar,
   Tabs,
-  TabPane
+  TabPane,
+  Table,
+  TableColumn,
+  Option,
+  OptionGroup
 } from 'element-ui';
 
 Vue
@@ -67,7 +71,10 @@ Vue
   .use(Calendar)
   .use(Tabs)
   .use(TabPane)
-
+  .use(Table)
+  .use(TableColumn)
+  .use(Option)
+  .use(OptionGroup)
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
