@@ -4,7 +4,7 @@
       <el-header><Bar /></el-header>
       <el-container>
         <el-aside width="200px"><Menu /></el-aside>
-        <el-main>
+        <el-main id="app-body">
           <router-view />
         </el-main>
       </el-container>

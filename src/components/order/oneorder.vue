@@ -4,14 +4,14 @@
 <div class="box-card order">
     <el-row class="order-header">
         <el-col class="order-index" :span="1">
-            4
+            {{order.daySn}}
         </el-col>
         <el-col class="clearfix" :span="23">
             <div>
-                预计 00:10 送达
+                {{order.headPromptForAppV2[0].text}}
             </div>
             <div class="order-state">
-                订单完成
+                {{order.statusForPrint}}
             </div>
         </el-col>
     </el-row>
@@ -22,15 +22,15 @@
             </el-col>
             <el-col class="user-info clearfix" :span="23">
                 <div class="user-order">
-                    <span class="un">李**</span>·
-                    <span class="phone">查看手机号</span>·
-                    <span class="d-type">蜂鸟配送</span>·
-                    <span class="vip-type">超级会员</span>·
-                    <span class="other-info">近20天第4次下单</span>
+                    <span class="un">{{order.consigneeName}}</span>·
+                    <span class="phone">查看手机号</span>
+                    <template v-for="(item, index) in order.userTips" >
+                        ·<span :key="index" class="user-tip">{{item.content}}</span>
+                    </template>
                 </div>
                 <div class="order-position">
-                    <span class="tip">订单完成3小时后隐藏</span>
-                    <span class="distance">订单完成3小时后隐藏</span>
+                    <span class="tip">{{order.consigneeAddress}}</span>
+                    <span class="distance">{{order.distance}}</span>
                     <span class="map">查看地图</span>
                 </div>
             </el-col>
@@ -42,12 +42,11 @@
                 <i class="el-icon-dish-1"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                <span>备餐事件 </span>
-                <span>3分41秒</span>
+                <span>备餐时间 </span>
+                <span>{{order.mealCompleteButton.prepareTime | secondToTime}}</span>
             </el-col>
         </el-row>
         <el-divider></el-divider>
-        
         <el-row class="order-timeline">
             <el-col class="" :span="1">
                 <i class="el-icon-wind-power"></i>
@@ -57,30 +56,15 @@
                 <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
                 <div class="clearfix el-col el-col-23">
                     <ul class="el-timeline" :class="{'hide':timelinestate}">
-                        <li class="el-timeline-item">
+                        <li class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
                             <div class="el-timeline-item__tail"></div>
                             <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
                             <div class="el-timeline-item__wrapper">
-                                <div class="el-timeline-item__timestamp is-bottom">2018-04-15</div>
-                                <div class="el-timeline-item__content"> 进度 </div>
+                                <div class="el-timeline-item__timestamp is-bottom">{{item.time.message}}</div>
+                                <div class="el-timeline-item__content"> {{item.status.message}} </div>
                             </div>
                         </li>
-                        <li class="el-timeline-item">
-                            <div class="el-timeline-item__tail"></div>
-                            <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
-                            <div class="el-timeline-item__wrapper">
-                                <div class="el-timeline-item__timestamp is-bottom">2018-04-15</div>
-                                <div class="el-timeline-item__content"> 进度 </div>
-                            </div>
-                        </li>
-                        <li class="el-timeline-item">
-                            <div class="el-timeline-item__tail"></div>
-                            <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
-                            <div class="el-timeline-item__wrapper">
-                                <div class="el-timeline-item__timestamp is-bottom">2018-04-15</div>
-                                <div class="el-timeline-item__content"> 进度 </div>
-                            </div>
-                        </li>
+
                     </ul>
                 </div>
 
@@ -93,76 +77,93 @@
                 <i class="el-icon-shopping-bag-1"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                <div>3件商品</div>
-                <el-row class="items">
-                    <section>
-                        <el-col :span="8" class="name">奶茶</el-col>
-                        <el-col :span="8" class="count">x3</el-col>
-                        <el-col :span="8" class="price">25.2</el-col>
+                <div>{{order.goodsSummary}}</div>
+                <el-row class="items" v-for="group in order.newGroups" :key="group.type">
+                    <section v-for="item in group.items" :key="item.vfoodId">
+                        <el-col :span="8" class="name">{{item.name}}</el-col>
+                        <el-col :span="14" class="count">x{{item.quantity}}</el-col>
+                        <el-col :span="2" class="price">{{parseFloat(item.price).toFixed(2)}}</el-col>
                     </section>
-                    <section>
-                        <el-col :span="8" class="name">奶茶</el-col>
-                        <el-col :span="8" class="count">x3</el-col>
-                        <el-col :span="8" class="price">25.2</el-col>
-                    </section>
-                    <section>
-                        <el-col :span="8" class="name">奶茶</el-col>
-                        <el-col :span="8" class="count">x3</el-col>
-                        <el-col :span="8" class="price">25.2</el-col>
-                    </section>
+
                 </el-row>
                 <el-divider></el-divider>
                 <section :span="8" class="other">
                     <section>
                         <header class="title">其他</header>
                         <el-col :span="8" class="name">配送费</el-col>
-                        <el-col :span="8" class="count"></el-col>
-                        <el-col :span="16" class="price">1.00</el-col>
+                        <el-col :span="16" class="price">{{order.deliveryFee | formatMoney}}</el-col>
                     </section>
                 </section>
                 <section :span="8" class="onsale">
-                    <section>
-                        <header class="title">优惠</header>
-                        <el-col :span="8" class="name">店铺满减</el-col>
-                        <el-col :span="8" class="count"></el-col>
-                        <el-col :span="16" class="price">-3.00</el-col>
+                    <header class="title">优惠</header>
+                    <section v-for="(item,index) in order.activities" :key="index">
+                        <el-col :span="8" class="name">{{item.name}}</el-col>
+                        <el-col :span="16" class="price">{{item.amount | formatMoney}}</el-col>
                     </section>
                 </section>
             </el-col>
         </el-row>
         <el-divider></el-divider>
-
-        <el-row class="">
+        <el-row class="user-pay">
             <el-col class="" :span="1">
                 <i class="el-icon-user"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                
+                <section>
+                    <el-col :span="8" class="name">顾客实付</el-col>
+                    <el-col :span="16" class="price">已支付 ¥ {{order.payAmount | formatMoney}}</el-col>
+                </section>
+                <section>
+                    <el-col :span="8" class="name">本次收入</el-col>
+                    <el-col :span="16" class="income price">¥ {{order.income | formatMoney}}</el-col>
+                </section>
             </el-col>
         </el-row>
         <el-divider></el-divider>
-        <el-row class="">
+        <el-row class="options">
             <el-col class="" :span="1">
                 <i class="el-icon-user"></i>
             </el-col>
-            <el-col class="clearfix" :span="23">
-                
+            <el-col class="clearfix" :span="23"> 
+                <section>
+                    <el-col :span="8" class="msgs">
+                        <p>完成时间 : {{order.settledTime | formatDate}}</p>
+                        <p>下单时间 : {{order.activeTime | formatDate}}</p>
+                        <p>单号 : {{order.id}}</p>
+                    </el-col>
+                    <el-col :span="16" class="btns">
+                        <el-button>打印</el-button>
+                        <el-button>订单退款</el-button>
+                    </el-col>
+                </section>
             </el-col>
         </el-row>
-
     </div>
 </div>
 
 </template>
 
 <script>
+import formatDate from '@/utils/date.js'
 export default {
     name:'',
     components: {},
+    filters:{
+        formatDate(time) {
+            let date = new Date(time)
+            return formatDate( 'yyyy-MM-dd hh:mm',date);
+        },
+        formatMoney(money){
+            return parseFloat(money).toFixed(2)
+        },
+        secondToTime(sec){
+            return parseInt(sec/60) + "分" + sec%60 + "秒";
+        }
+    },
+    props:["order"],
     data() {
         return {
             timelinestate:true,
-            order:[]
         };
     },
     computed: {},
@@ -171,10 +172,6 @@ export default {
     },
     created() {},
     mounted() {
-        var _this = this
-        this.$axios("http://39.105.114.242/elemeorder/").then(res=>{
-            _this.order = res.orders;
-        })
     },
     beforeCreate() {},
     beforeMount() {},
@@ -235,6 +232,11 @@ export default {
                     .phone{
                         color:#4e8cfa;
                         cursor: pointer;
+                    }
+                    .user-tip{
+                        font-size: 14px;
+                        font-weight: 300;
+                        margin:0 10px;
                     }
                 }
                 .order-position{
@@ -306,6 +308,36 @@ export default {
                 header{
                     font-size: 12px;
                     opacity: .5;
+                }
+            }
+        }
+        .user-pay{
+            line-height: 30px;
+            .name{
+                font-size: 16px;
+                font-weight: 500;
+            }
+            .price{
+                font-size: 16px;
+                text-align: right;
+                padding-right: 10px;
+            }
+            .income{
+                color: red;
+            }
+        }
+        .options{
+            .msgs{
+                p{
+                    font-size: 12px;
+                    color: rgb(99, 99, 99);
+                    line-height: 16px;
+                }
+            }
+            .btns{
+                .el-button{
+                    margin:10px 10px 0;
+                    float: right;
                 }
             }
         }
