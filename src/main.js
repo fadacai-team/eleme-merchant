@@ -26,7 +26,17 @@ import {
   Timeline,
   TimelineItem,
   Input,
+  Radio,
+  RadioButton,
+  RadioGroup,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Calendar,
+  Tabs,
+  TabPane
 } from 'element-ui';
+
 Vue
   .use(Button)
   .use(Select)
@@ -48,6 +58,15 @@ Vue
   .use(Timeline)
   .use(TimelineItem)
   .use(Input)
+  .use(Radio)
+  .use(RadioButton)
+  .use(RadioGroup)
+  .use(Dropdown)
+  .use(DropdownItem)
+  .use(DropdownMenu)
+  .use(Calendar)
+  .use(Tabs)
+  .use(TabPane)
 
 Vue.config.productionTip = false
 
