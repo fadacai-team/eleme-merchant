@@ -39,6 +39,8 @@ import {
   TableColumn,
   Option,
   OptionGroup,
+  Upload,
+  Dialog,
 } from 'element-ui';
 
 Vue
@@ -76,6 +78,9 @@ Vue
   .use(TableColumn)
   .use(Option)
   .use(OptionGroup)
+  .use(Upload)
+  .use(Dialog)
+
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
