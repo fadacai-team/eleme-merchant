@@ -4,23 +4,33 @@
     <header>索赔中心</header>
 
     <el-tabs v-model="activeName">
-    <el-tab-pane label="索赔申请" name="shenqing">索赔申请</el-tab-pane>
+    <el-tab-pane label="索赔申请" name="shenqing">
+        <aside class="msg">
+            <header>索赔规则</header>
+            <p>索赔金额=商户实收金额x100%</p>
+            <p>物流原因退款的订单可索赔(特殊情况如:未使用蜂鸟配送、超过索赔时效等场景不可发起索赔)<el-button type="text" size="small">查阅详细规则</el-button></p>
+        </aside>
+
+
+    </el-tab-pane>
+
+
     <el-tab-pane label="索赔进度" name="jindu">
-        <el-card class="info-card" style="margin-bottom:16px;padding:20px;">
+        <el-card class="info-card" style="margin-bottom:16px;padding:20px;" shadow="hover">
             <el-row>
-            <el-col :span="8">
-                <header class="green"><b>0.00</b>元</header>
-                <p>已到账2单</p>
-            </el-col>
-            <el-col :span="8">
-                <header class="yellow"><b>0.00</b>元</header>
-                <p>待到账2单</p>
-            </el-col>
-            <el-col :span="8">
-                <header><b>0.00</b>元</header>
-                <p>审核中2单</p>
-            </el-col>
-        </el-row>
+                <el-col :span="8">
+                    <header class="green"><b>0.00</b>元</header>
+                    <p>已到账2单</p>
+                </el-col>
+                <el-col :span="8">
+                    <header class="yellow"><b>0.00</b>元</header>
+                    <p>待到账2单</p>
+                </el-col>
+                <el-col :span="8">
+                    <header><b>0.00</b>元</header>
+                    <p>审核中2单</p>
+                </el-col>
+            </el-row>
         </el-card>
         <el-row style="margin:0 0 10px">
         <el-select v-model="dateValue" :default-first-option="true">
@@ -68,7 +78,7 @@ filters:{
 },
 data() {
     return {
-    activeName: "jindu",
+    activeName: "shenqing",
     dateOptions: [
         {
         value: "202008",
@@ -181,6 +191,16 @@ activated() {},
         font-size: 32px;
         font-weight: 500;
         margin-bottom: 10px;
+    }
+    .msg{
+        header{
+            font-size: 16px;
+            line-height: 32px;
+            font-weight: 600;
+        }
+        .el-button{
+            margin-left: 10px;
+        }
     }
     .info-card{
         text-align: center;

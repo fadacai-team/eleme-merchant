@@ -53,7 +53,7 @@ export default {
         return {
             tempOrders:[],
             orders:[],
-            activeName:""
+            activeName:"newOrder"
         };
     },
     computed: {
@@ -76,7 +76,10 @@ export default {
         var _this = this
         this.$axios("http://39.105.114.242/elemeorder/").then(res=>{
             _this.tempOrders = res.result.orders;
-            
+            var i = parseInt(Math.random()*3)
+            _this.orders = _this.tempOrders.filter((value,index)=>{
+                return index==i
+            })
         })
     },
     beforeCreate() {},
