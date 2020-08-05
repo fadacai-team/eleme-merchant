@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router/index' 
 import store from './store'
 import axios from './common/myaxios'
-
+import ECharts from 'vue-echarts'
+import  'echarts/lib/chart/line'
+Vue.component('chart', ECharts)
 // element-ui
 import {
   Button, 
@@ -57,7 +59,6 @@ Vue
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
-
 new Vue({
   router,
   store,

@@ -239,11 +239,9 @@ export default {
                 background-color: rgb(220, 203, 203);
                 >.today-timing-formula {
                     display: flex;
-                    justify-content: start;
                     align-items: center;
                     >span{
                         display: flex;
-                        justify-content: start;
                         align-items: center;
                         flex-direction: column;
                         margin-left: 30px;

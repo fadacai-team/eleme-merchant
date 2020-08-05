@@ -1,7 +1,8 @@
 <!--  -->
 <template>
-<div class="flow-qs">
-    
+<div class=''>
+    流量分布
+     <chart ref="chart1" :options="orgOptions" :auto-resize="true"></chart>
 </div>
 </template>
 
@@ -12,11 +13,24 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
-// props:['flowQs','xAxis'],
+props:['flowfb'],
 data() {
 //这里存放数据
 return {
-
+    orgOptions: {
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            type: 'line',
+            smooth: true
+        }]
+    }
 };
 },
 //监听属性 类似于data概念
@@ -45,9 +59,5 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style lang='less' scoped>
-.flow-qs{
-    width: 860px;
-    height: 400px;
-    background-color: rgb(223, 150, 150);
-}
+
 </style>
