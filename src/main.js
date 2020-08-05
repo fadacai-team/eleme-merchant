@@ -5,7 +5,12 @@ import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
 import  'echarts/lib/chart/line'
-Vue.prototype.$store = store
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/legendScroll'
+
 Vue.component('v-echart', ECharts)
 
 import {

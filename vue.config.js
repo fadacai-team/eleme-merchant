@@ -2,7 +2,7 @@ module.exports = {
   "lintOnSave": false,
   "publicPath": "/",
   "productionSourceMap": false,
-  transpileDependencies: [
+  "transpileDependencies": [
     'vue-echarts',
     'resize-detector'
   ]
