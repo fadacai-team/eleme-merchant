@@ -48,7 +48,9 @@ import {
   Option,
   PageHeader,
   DatePicker,
-  
+  badge,
+  rate,
+  tag
 } from 'element-ui';
 
 Vue
@@ -87,6 +89,9 @@ Vue
   .use(Option)
   .use(PageHeader)
   .use(DatePicker)
+  .use(badge)
+  .use(rate)
+  .use(tag)
 
 Vue.config.productionTip = false
 
