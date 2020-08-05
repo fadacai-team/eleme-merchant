@@ -1,20 +1,20 @@
 <template>
-<div class="slider">
-  <div>
-    <img src="@/assets/home/slider1.jpg" alt="">
-    <img :src="imgs[currentIndex]" alt="">
+  <div class="slider">
+    <div>
+      <img src="@/assets/home/slider1.jpg" alt="" />
+      <img :src="imgs[currentIndex]" alt="" />
+    </div>
   </div>
-</div>
 </template>
 <script>
 export default {
   name: "Slider",
   data() {
     return {
-      imgs:[
+      imgs: [
         "@/assets/home/slider1.jpg",
         "@/assets/home/slider1.jpg",
-        "@/assets/home/slider1.jpg",
+        "@/assets/home/slider1.jpg"
       ],
       currentIndex: 0,
       timer: null
@@ -22,18 +22,18 @@ export default {
   },
   computed: {
     nextIndex() {
-      if(this.currentIndex == this.dataList.length - 1) {
+      if (this.currentIndex == this.dataList.length - 1) {
         return 0;
-      }else {
+      } else {
         return this.currentIndex + 1;
       }
     }
   },
-  methods:{
+  methods: {
     runInv() {
       this.timer = setInterval(() => {
-        this.gotoPage(this.nextIndex)
-      }, 1000)
+        this.gotoPage(this.nextIndex);
+      }, 1000);
     }
   }
 };

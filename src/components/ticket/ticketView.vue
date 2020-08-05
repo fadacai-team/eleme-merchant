@@ -9,7 +9,18 @@
 
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {},
+components: {
+  index:{
+      template:`
+        动态组件1
+      `
+  },
+  second:{
+      template:`
+        动态组件2
+      `
+  }
+},
 data() {
 //这里存放数据
 return {

@@ -1,6 +1,8 @@
-<!--  -->
+<!-- 顾客评价 -->
 <template>
-<div class=''></div>
+<div class=''>
+    评价
+</div>
 </template>
 
 <script>

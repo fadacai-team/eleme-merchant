@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-<div class=''></div>
+<div class="nav">
+    <p v-for="(item,index) in nav" :key="item+index" :class="{'nav-active':isNavActive}" @click="navChange(index)"><span>{{item.name}}</span></p>
+</div>
 </template>
 
 <script>
@@ -13,7 +15,14 @@ components: {},
 data() {
 //这里存放数据
 return {
-
+    nav:[
+            {name:'昨天',isNavActive:true},
+            {name:'近7天',isNavActive:false},
+            {name:'近30天',isNavActive:false},
+            {name:'自定义',isNavActive:false},
+            {name:'按周',isNavActive:false},
+            {name:'按月',isNavActive:false},
+        ],
 };
 },
 //监听属性 类似于data概念
@@ -22,7 +31,12 @@ computed: {},
 watch: {},
 //方法集合
 methods: {
-
+    navChange:function(index){
+        this.nav.forEach(function(item){
+            item.isNavActive=false
+        })
+        this.nav[index].isNavActive=true
+    }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
 created() {

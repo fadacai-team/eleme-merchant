@@ -5,7 +5,7 @@
       <el-container>
         <el-aside width="200px"><Menu /></el-aside>
         <el-main>
-          <router-view/>
+          <router-view />
         </el-main>
       </el-container>
     </el-container>
@@ -20,7 +20,7 @@ export default {
   name: "App",
   components: {
     Bar,
-    Menu
+    Menu,
   }
 };
 </script>
@@ -39,6 +39,9 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
 .clearfix {
   *zoom: 1;
 }
+em,i{
+  font-style: normal;
+}
 .clearfix:before,
 .clearfix:after {
   display: block;
@@ -55,13 +58,5 @@ a {
 }
 input {
   outline: none;
-}
-#app .el-header{
-  border-bottom: 1px solid #e4e7ed;
-}
-#app .el-main,#app .el-aside{
-  height: calc(100vh - 61px);
-  overflow: hidden;
-  overflow-y:auto;
 }
 </style>

@@ -1,6 +1,8 @@
 <!--  -->
 <template>
-<div class=''></div>
+<div class="flow-qs">
+    
+</div>
 </template>
 
 <script>
@@ -10,6 +12,7 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
+// props:['flowQs','xAxis'],
 data() {
 //这里存放数据
 return {
@@ -42,5 +45,9 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style lang='less' scoped>
-
+.flow-qs{
+    width: 860px;
+    height: 400px;
+    background-color: rgb(223, 150, 150);
+}
 </style>

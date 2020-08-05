@@ -20,7 +20,7 @@
             <a href="#">营销中心</a>
           </div>
           <ul>
-            <li class="turnover-item" v-for="item in marketingData.slice(0,2)" :key="item.id">
+            <li class="turnover-item" v-for="item in marketingData.slice(0,3)" :key="item.id">
               <p>{{item.type}}</p>
               <p>{{item.msg}}</p>
             </li>
@@ -31,10 +31,14 @@
           <div class="item-header clearfix">
             <h3>店铺推广</h3>
           </div>
-          <div>
-            <a href="#">竞价推广</a>
-            <a href="#">品牌展位</a>
+          <div class="popularize-item">
+            <a v-for="item in popularizeData" :key="item.id" :href="item.url">
+              <el-tag>
+                {{ item.tag }}
+              </el-tag>
+            </a>
           </div>
+
       </div>
       </div>
       <div class="main-left-item serve">
@@ -44,18 +48,6 @@
         </div>
         <ul>
           <li class="turnover-item" v-for="item in serveData" :key="item.id">
-          </li>
-        </ul>
-      </div>
-      <div class="main-left-item turnover">
-        <div class="item-header clearfix">
-          <h3>本地生活大学</h3>
-          <a href="#">更多数据</a>
-        </div>
-        <ul>
-          <li class="turnover-item" v-for="item in turnoverData" :key="item.id">
-            <p>{{item.type}}</p>
-            <p>{{item.num}}</p>
           </li>
         </ul>
       </div>
@@ -77,11 +69,9 @@
         </ul>
         <div class="notice-bot">
           <Slider/>
-          <!-- <img src="@/assets/shouye.jpg" alt=""> -->
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -113,11 +103,15 @@ export default {
         {id:3,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
         {id:4,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
       ],
+      popularizeData: [
+        { id: 1, tag: "竞价推广", url: "#" },
+        { id: 2, tag: "品牌展位", url: "#" }
+      ],
       serveData:[
         {id:1,msg:"饿了么官方塑料袋",star:5,sales:849,tag:["官方商品"]},
-        {id:1,msg:"饿了么官方塑料袋",star:5,sales:2718,tag:[]},
-        {id:1,msg:"饿了么官方塑料袋",star:5,sales:319,tag:["金牌服务","头像35元","不满意全退"]},
-        {id:1,msg:"好评必备9.8元",star:4.9,sales:164,tag:["低至一分钱","改善评分","好评必备"]}
+        {id:2,msg:"饿了么官方塑料袋",star:5,sales:2718,tag:[]},
+        {id:3,msg:"饿了么官方塑料袋",star:5,sales:319,tag:["金牌服务","头像35元","不满意全退"]},
+        {id:4,msg:"好评必备9.8元",star:4.9,sales:164,tag:["低至一分钱","改善评分","好评必备"]}
       ]
     }
   },
@@ -154,10 +148,21 @@ export default {
           float: left;
         }
       }
-      .marketing,.popularize{
+      .marketing{
         float: left;
         width: 300px;
-      }  
+        padding-right: 20px;
+      }
+      .popularize{
+        float: left;
+        width: 300px;
+        .popularize-item{
+          a{
+            margin-right: 20px;
+          }
+        }
+      }
+
     }
     .main-right{
       margin-left: 50px;

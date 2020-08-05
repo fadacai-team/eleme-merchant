@@ -1,6 +1,8 @@
-<!--  -->
+<!-- 消费行为 -->
 <template>
-<div class=''></div>
+<div class=''>
+    消费行为
+</div>
 </template>
 
 <script>
