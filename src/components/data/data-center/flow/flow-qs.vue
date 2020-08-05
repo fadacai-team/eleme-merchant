@@ -1,7 +1,7 @@
 <!--  -->
 <template>
 <div class="flow-qs">
-
+    
 </div>
 </template>
 
@@ -48,6 +48,6 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 .flow-qs{
     width: 860px;
     height: 400px;
-    background-origin: rgb(223, 150, 150);
+    background-color: rgb(223, 150, 150);
 }
 </style>

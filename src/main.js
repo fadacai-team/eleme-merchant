@@ -3,7 +3,9 @@ import App from './App.vue'
 import router from './router/index' 
 import store from './store'
 import axios from './common/myaxios'
-
+import ECharts from 'vue-echarts'
+import  'echarts/lib/chart/line'
+Vue.component('v-echart', ECharts)
 // element-ui
 import {
   Button, 
@@ -36,13 +38,7 @@ import {
   Tabs,
   TabPane,
   Table,
-  TableColumn,
-  Option,
-  OptionGroup,
-  Upload,
-  Dialog,
-  DatePicker,
-  PageHeader
+  TableColumn
 } from 'element-ui';
 
 Vue
@@ -78,17 +74,10 @@ Vue
   .use(TabPane)
   .use(Table)
   .use(TableColumn)
-  .use(Option)
-  .use(OptionGroup)
-  .use(Upload)
-  .use(Dialog)
-  .use(DatePicker)
-  .use(PageHeader)
 
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
-
 new Vue({
   router,
   store,
