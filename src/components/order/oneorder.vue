@@ -56,6 +56,14 @@
                 <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
                 <div class="clearfix el-col el-col-23">
                     <ul class="el-timeline" :class="{'hide':timelinestate}">
+                        <li class="el-timeline-item">
+                            <div class="el-timeline-item__tail"></div>
+                            <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
+                            <div class="el-timeline-item__wrapper">
+                                <div class="el-timeline-item__timestamp is-bottom">{{order.settledTime | formatDate(order.settledTime,'mm:ss')}}</div>
+                                <div class="el-timeline-item__content"> {{order.statusForPrint}} </div>
+                            </div>
+                        </li>
                         <li class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
                             <div class="el-timeline-item__tail"></div>
                             <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
@@ -149,7 +157,8 @@ export default {
     name:'',
     components: {},
     filters:{
-        formatDate(time) {
+        formatDate(time,fm) {
+            fm = fm?fm:"yyyy-MM-dd hh:mm";
             let date = new Date(time)
             return formatDate( 'yyyy-MM-dd hh:mm',date);
         },
