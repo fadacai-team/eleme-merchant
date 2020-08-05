@@ -1,31 +1,33 @@
 <!--  -->
 <template>
 <div class="footer">
-       <div class="shop-rule">
-           <aside>购买规则</aside>
+       <div class="rule">
+          
+           <div class="shop-rule">
+            <aside>购买规则</aside>
            <div class="cell-info">
               <li>
-                  <div class="name">
+                  <div class="dt">
                       售卖日期
                   </div>
-                  <div class="timer">
+                  <div class="dd">
                       日期
                   </div>
               </li>
 
               <li>
-                  <div class="name remain">
+                  <div class="dt remain">
                       库存
                   </div>
-                  <div class="timer">
+                  <div class="dd">
                       <input type="text" value="1000">
                   </div>
               </li>
               <li>
-                  <div class="name last">
+                  <div class="dt last">
                       每人购买
                   </div>
-                  <div class="timer day-buy" >
+                  <div class="dd day-buy" >
                       <input type="text" value="20">
                       <i>份</i>
                   </div>
@@ -36,10 +38,10 @@
            <aside>使用规则</aside>
            <div class="use-time">
                <li>
-                     <div class="name">
+                     <div class="dt">
                       有效期
                     </div>
-                    <div class="timer">
+                    <div class="dd">
                         购买后
                         <div class="chooseDate">
                             <input type="text" value="60">
@@ -49,6 +51,7 @@
                     </div>
                </li>
            </div>
+       </div>
        </div>
     </div>
 </template>
@@ -96,33 +99,38 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
         margin-top: 80px;
         position: relative;
         font-size: 14px;
+        aside {
+        position: absolute;
+        left: 10px;
+        font-size: 16px;
+        margin-top: -2px;
+
+        }
         i,em{
             font-style: normal;
         }
-        li{
-            list-style: none;
-            display:flex;
-           position: relative;
-           left: 150px;
-           margin-bottom: 30px;
-           .name{
-               width: 100px;
-               &:after{
-                   content: "*";
-                   color:red
-               }
-           }
-           .timer{
-               position: relative;
-               left: 40px;
-           }
-        }
-         aside {
-                position: absolute;
-                left: 10px;
-                font-size: 16px;
+        .rule{
+            position: relative;
+            top: 40px;
+            li{
+                position: relative;
+                display: flex;
+                left: 120px;
+                margin-bottom: 30px;
+            .dt{
+                position: relative;
+                width: 100px;
+                &:after{
+                    content:"*";
+                    color: red;
+                }
             }
-        .shop-rule {
+            .dd{
+                position: relative;
+                left: 80px;
+            }
+        }
+            .shop-rule {
             position: relative;
             border-top: 1px solid #E6E6E6;
             margin-top: 30px;
@@ -137,7 +145,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
                         
                     }
                 }
-                .timer {
+                .dd {
                     padding: 5px;
                     border: 1px solid #DCDCDE;
                     position: relative;
@@ -163,7 +171,8 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
             }
             }
             .cell-info {
-
+                position: relative;
+                left: 100px;
             }
         }
 
@@ -174,10 +183,11 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
             padding-top: 30px;
 
             .use-time {
-                
+               position: relative;
+                left: 100px;
                 li {
-                    
-                    .timer {
+                   
+                    .dd {
 
                          display: flex;
                          line-height: 30px;
@@ -209,6 +219,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
                     }
                     }
                 }
+        }
         }
     }
 </style>
