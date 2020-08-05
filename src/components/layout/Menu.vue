@@ -3,7 +3,7 @@
     <el-menu
       class="menu"
       :collapse="isCollapse"
-      default-active="1"
+      default-active="index"
       :router="isRouter"
       @open="handleOpen"
       @close="handleClose"
@@ -48,46 +48,46 @@ export default {
       menulist: [
         {
           name: "首页",
-          router: "/index",
+          router: "index",
           icon: "el-icon-s-home",
         },
         {
           name: "订单",
-          router: "/order",
+          router: "order",
           icon: "el-icon-s-order",
           childList: [
-              {name:"订单处理",router:"/orders/process"},
-              {name:"订单查询",router:"/orders/search"},
-              {name:"索赔中心",router:"/orders/property"},
-              {name:"订单设置",router:"/orders/setting"},
-              {name:"企业订单",router:"/orders/reservation"}
+              {name:"订单处理",router:"orders/process"},
+              {name:"订单查询",router:"orders/search"},
+              {name:"索赔中心",router:"orders/property"},
+              {name:"订单设置",router:"orders/setting"},
+              {name:"企业订单",router:"orders/reservation"}
           ]
         },
         {
           name: "商品",
-          router: "/goods",
+          router: "goods",
           icon: "el-icon-s-goods",
-          childList: [{ name: "商品详情", router: "/goods/detail" }]
+          childList: [{ name: "商品详情", router: "goods/detail" }]
         },
         {
           name: "外卖券",
           router: "/ticket",
           icon: "el-icon-s-ticket",
-          childList: [{ name: "demo", router: "/goods/demo" }]
+          childList: [{ name: "demo", router: "goods/demo" }]
         },
         {
           name: "顾客",
           router: "/customer",
           icon: "el-icon-s-custom",
-          childList: [{ name: "demo", router: "/customer/demo" }]
+          childList: [{ name: "demo", router: "customer/demo" }]
         },
         {
           name: "营销",
           router: "/marketing",
           icon: "el-icon-s-marketing",
           childList: [
-            {name:"营销中心",router:"/marketing/center"},
-            {name:"我的活动",router:"/marketin/activities"}
+            {name:"营销中心",router:"marketing/center"},
+            {name:"我的活动",router:"marketin/activities"}
           ]
         },
         {
@@ -95,23 +95,23 @@ export default {
           router: "/data",
           icon: "el-icon-s-data",
           childList: [                        
-            {name:"数据中心",router:"/datacenter"},
-            {name:"营销分析",router:"/mkAnalytics"},
-            {name:"数据下载",router:"/datadownload"},
-            {name:"行业复苏",router:"/recovery"}
+            {name:"数据中心",router:"datacenter"},
+            {name:"营销分析",router:"mkAnalytics"},
+            {name:"数据下载",router:"datadownload"},
+            {name:"行业复苏",router:"recovery"}
           ]
         },
         {
           name: "财务",
           router: "/finance",
           icon: "el-icon-s-finance",
-          childList: [{ name: "demo", router: "/customer/demo" }]
+          childList: [{ name: "demo", router: "customer/demo" }]
         },
         {
           name: "门店",
           router: "/shop",
           icon: "el-icon-s-shop",
-          childList: [{ name: "demo", router: "/shop/info" }]
+          childList: [{ name: "demo", router: "shop/info" }]
         }
       ]
     };

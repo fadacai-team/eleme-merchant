@@ -5,7 +5,7 @@
       <el-container>
         <el-aside width="200px"><Menu /></el-aside>
         <el-main>
-          <router-view />
+          <router-view/>
         </el-main>
       </el-container>
     </el-container>
@@ -55,5 +55,13 @@ a {
 }
 input {
   outline: none;
+}
+#app .el-header{
+  border-bottom: 1px solid #e4e7ed;
+}
+#app .el-main,#app .el-aside{
+  height: calc(100vh - 61px);
+  overflow: hidden;
+  overflow-y:auto;
 }
 </style>
