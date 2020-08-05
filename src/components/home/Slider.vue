@@ -1,7 +1,6 @@
 <template>
   <div class="slider">
     <div>
-      <img src="@/assets/home/slider1.jpg" alt="" />
       <img :src="imgs[currentIndex]" alt="" />
     </div>
   </div>
@@ -12,9 +11,9 @@ export default {
   data() {
     return {
       imgs: [
-        "@/assets/home/slider1.jpg",
-        "@/assets/home/slider1.jpg",
-        "@/assets/home/slider1.jpg"
+        require("@/assets/home/slider1.jpg"),
+        require("@/assets/home/serve1.jpg"),
+        require("@/assets/home/serve2.jpg")
       ],
       currentIndex: 0,
       timer: null
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     nextIndex() {
-      if (this.currentIndex == this.dataList.length - 1) {
+      if (this.currentIndex == this.imgs.length - 1) {
         return 0;
       } else {
         return this.currentIndex + 1;
@@ -30,11 +29,20 @@ export default {
     }
   },
   methods: {
-    runInv() {
-      this.timer = setInterval(() => {
+    gotoPage(index) {
+      this.currentIndex = index;
+      console.log(this.currentIndex);
+    },
+    // runInv() {
+    //   this.timer = setInterval(() => {
+    //     this.gotoPage(this.nextIndex);
+    //   }, 1000);
+    // }
+  },
+  mounted:function(){
+    this.timer = setInterval(() => {
         this.gotoPage(this.nextIndex);
       }, 1000);
-    }
   }
 };
 </script>

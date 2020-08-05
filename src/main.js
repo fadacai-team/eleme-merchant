@@ -26,7 +26,9 @@ import {
   CollapseItem,
   Timeline,
   TimelineItem,
-  badge
+  badge,
+  rate,
+  tag
 } from 'element-ui';
 Vue
   .use(Input)
@@ -50,6 +52,8 @@ Vue
   .use(Timeline)
   .use(TimelineItem)
   .use(badge)
+  .use(rate)
+  .use(tag)
 
 Vue.config.productionTip = false
 

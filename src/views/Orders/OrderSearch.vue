@@ -81,25 +81,6 @@ export default {
     activated() {},
 }
 </script>
-<style lang='less'  scoped>
-.container{
-    max-width: 1220px;
-    margin:0 auto;
-    position: relative;
-    .order-wrap{
-        
-    }
-    .options{
-        position: sticky;
-        top: 0;
-        background-color: rgb(255, 255, 255);
-        box-shadow: 0 -30px 0px 30px rgb(255, 255, 255), 0px 0px 10px 0px rgba(19, 19, 19, 0.26);
-        z-index: 10;
-        width: 100%;
-        .option{
-            margin-bottom: 12px;
-        }
-    }
-}
+<style lang='scss'  scoped>
 
 </style>

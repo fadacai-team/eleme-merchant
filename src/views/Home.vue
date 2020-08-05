@@ -47,7 +47,20 @@
           <a href="#">全部服务</a>
         </div>
         <ul>
-          <li class="turnover-item" v-for="item in serveData" :key="item.id">
+          <li class="serve-item" v-for="item in serveData" :key="item.id">
+            <img :src="item.img" alt="">
+            <div class="item-right">
+              <p>{{item.title}}</p>
+              <div>
+                <el-rate v-model="item.rate"  disabled show-score></el-rate>
+                <span>销量 {{item.sales}}</span>
+              </div>
+              <div>
+                <el-tag v-for="tag in item.tag" :key="tag">
+                  {{tag}}
+                </el-tag>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -60,7 +73,7 @@
         </div>
         <ul class="clearfix notice-mid">
           <li v-for="item in notices" :key="item.id">
-            <a href="item.url">{{item.msg}}</a>
+            <a :href="item.url">{{item.msg}}</a>
             <div>
               <span>{{item.type}}</span>
               <span>{{item.date}}</span>            
@@ -101,17 +114,21 @@ export default {
         {id:1,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
         {id:2,type:"超级吃货",msg:"提升排名，精准招揽顾客"},        
         {id:3,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
-        {id:4,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
+        {id:5,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
+        {id:6,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
+        {id:7,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
+        {id:8,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
+        {id:9,type:"超级吃货",msg:"提升排名，精准招揽顾客"},
       ],
       popularizeData: [
         { id: 1, tag: "竞价推广", url: "#" },
         { id: 2, tag: "品牌展位", url: "#" }
       ],
       serveData:[
-        {id:1,msg:"饿了么官方塑料袋",star:5,sales:849,tag:["官方商品"]},
-        {id:2,msg:"饿了么官方塑料袋",star:5,sales:2718,tag:[]},
-        {id:3,msg:"饿了么官方塑料袋",star:5,sales:319,tag:["金牌服务","头像35元","不满意全退"]},
-        {id:4,msg:"好评必备9.8元",star:4.9,sales:164,tag:["低至一分钱","改善评分","好评必备"]}
+        {id:1,title:"饿了么官方塑料袋",rate:5,sales:849,img:require("@/assets/home/serve1.jpg"),tag:["官方商品"]},
+        {id:2,title:"好评爆单尽在掌握",rate:5,sales:2718,img:require("@/assets/home/serve2.jpg"),tag:[]},
+        {id:3,title:"设计不满意全额退",rate:5,sales:319,img:require("@/assets/home/serve3.jpg"),tag:["金牌服务","头像35元","不满意全退"]},
+        {id:4,title:"好评必备9.8元",rate:4.9,sales:164,img:require("@/assets/home/serve4.jpg"),tag:["低至一分钱","改善评分","好评必备"]}
       ]
     }
   },
@@ -162,7 +179,19 @@ export default {
           }
         }
       }
-
+      .serve{
+        .serve-item{
+          height: 120px;
+          width: 300px;
+          float: left;
+          img{
+            float: left;
+          }
+          .item-right{
+            float: left;
+          }
+        }
+      }
     }
     .main-right{
       margin-left: 50px;
