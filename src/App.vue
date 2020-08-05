@@ -56,7 +56,12 @@ ul,ol,li{
 a {
   text-decoration: none;
 }
+
 input {
   outline: none;
+}
+#app-body{
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
 }
 </style>
