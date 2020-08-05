@@ -55,6 +55,7 @@
                 <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
                 <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
                 <div class="clearfix el-col el-col-23">
+<transition name="timeline">
                     <ul class="el-timeline" :class="{'hide':timelinestate}">
                         <li class="el-timeline-item">
                             <div class="el-timeline-item__tail"></div>
@@ -64,16 +65,16 @@
                                 <div class="el-timeline-item__content"> {{order.statusForPrint}} </div>
                             </div>
                         </li>
-                        <li class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
-                            <div class="el-timeline-item__tail"></div>
-                            <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
-                            <div class="el-timeline-item__wrapper">
-                                <div class="el-timeline-item__timestamp is-bottom">{{item.time.message}}</div>
-                                <div class="el-timeline-item__content"> {{item.status.message}} </div>
-                            </div>
-                        </li>
-
+                            <li  class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
+                                <div class="el-timeline-item__tail"></div>
+                                <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
+                                <div class="el-timeline-item__wrapper">
+                                    <div class="el-timeline-item__timestamp is-bottom">{{item.time.message}}</div>
+                                    <div class="el-timeline-item__content"> {{item.status.message}} </div>
+                                </div>
+                            </li>
                     </ul>
+</transition>
                 </div>
 
             </el-col>
@@ -172,6 +173,7 @@ export default {
     props:["order"],
     data() {
         return {
+            timelineShow:false,
             timelinestate:true,
         };
     },
@@ -294,10 +296,7 @@ export default {
                     }
                 }
             }
-            .el-timeline.hide{
-                height: 30px;
-                overflow: hidden;
-            }
+
         }
         .productions{
             .name,.count,.price{
@@ -351,6 +350,29 @@ export default {
             }
         }
     }
+    
+}
 
+@keyframes hide{
+    0%{
+        height: 20px;
+        opacity: 1;
+    }
+    100%{
+        height: 0;
+        opacity: 0;
+    }
+}
+.timeline-enter-active{
+    animation: hide 2s  reverse;
+    overflow: hidden;
+}
+.timeline-leave-active{
+    animation: hide 2s ;
+    overflow: hidden;
+}
+.hide{
+    height: 20px;
+    overflow: hidden;
 }
 </style>

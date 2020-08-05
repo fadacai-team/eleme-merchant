@@ -38,7 +38,9 @@ import {
   Tabs,
   TabPane,
   Table,
-  TableColumn
+  TableColumn,
+  Option,
+  PageHeader
 } from 'element-ui';
 
 Vue
@@ -74,6 +76,8 @@ Vue
   .use(TabPane)
   .use(Table)
   .use(TableColumn)
+  .use(Option)
+  .use(PageHeader)
 
 Vue.config.productionTip = false
 
