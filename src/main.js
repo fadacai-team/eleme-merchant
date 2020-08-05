@@ -5,7 +5,7 @@ import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
 import  'echarts/lib/chart/line'
-Vue.component('chart', ECharts)
+Vue.component('v-echart', ECharts)
 // element-ui
 import {
   Button, 
@@ -29,7 +29,9 @@ import {
   TimelineItem,
   Input,
   Tabs,
-  TabPane
+  TabPane,
+  Table,
+  TableColumn
 } from 'element-ui';
 Vue
   .use(Input)
@@ -55,6 +57,8 @@ Vue
   .use(Input)
   .use(Tabs)
   .use(TabPane)
+  .use(Table)
+  .use(TableColumn)
 
 Vue.config.productionTip = false
 

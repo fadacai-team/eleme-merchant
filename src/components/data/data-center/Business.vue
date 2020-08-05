@@ -6,7 +6,7 @@
         <!-- 今日实时看板头部开始 -->
         <div class="today-timing-top">
             <div>
-                <p v-for="(item,index) in nav" :key="item+index" :class="{'nav-active':isNavActive}"><span>{{item.name}}</span></p>
+                <p v-for="(item,index) in nav" :key="item+index" :class="{'nav-active':item.isNavActive}"><span>{{item.name}}</span></p>
             </div>
             <ul>
             <li>时间</li>
