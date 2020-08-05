@@ -60,6 +60,66 @@
                     </div>
                     
                 </div>
+                <div class="market-client">
+                    <p class="client-title">引客进店</p>
+                    <el-row :gutter="20">
+                        <el-col :span="6" v-for="client,index in clients">
+                            <div class="grid-content bg-purple">
+                                <i :class=client.className></i>
+                                <p class="cont1">{{client.cont1}}</p>
+                                <p class="cont2">{{client.cont2}}</p>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
+                <div class="market-client">
+                    <p class="client-title">促进下单</p>
+                    <el-row :gutter="20">
+                        <el-col :span="6" v-for="dindan,index in dindans">
+                            <div class="grid-content bg-purple">
+                                <i :class=dindan.className></i>
+                                <p class="cont1">{{dindan.cont1}}</p>
+                                <p class="cont2">{{dindan.cont2}}</p>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
+                <div class="market-client">
+                    <p class="client-title">提升客单价</p>
+                    <el-row :gutter="20">
+                        <el-col :span="6" v-for="kedan,index in kedans">
+                            <div class="grid-content bg-purple">
+                                <i :class=kedan.className></i>
+                                <p class="cont1">{{kedan.cont1}}</p>
+                                <p class="cont2">{{kedan.cont2}}</p>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
+                <div class="market-client">
+                    <p class="client-title">刺激复购</p>
+                    <el-row :gutter="20">
+                        <el-col :span="6" v-for="fugou,index in fugous">
+                            <div class="grid-content bg-purple">
+                                <i :class=fugou.className></i>
+                                <p class="cont1">{{fugou.cont1}}</p>
+                                <p class="cont2">{{fugou.cont2}}</p>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
+                <div class="market-client">
+                    <p class="client-title">顾客管理</p>
+                    <el-row :gutter="20">
+                        <el-col :span="6" v-for="kehu,index in kehus">
+                            <div class="grid-content bg-purple">
+                                <i :class=kehu.className></i>
+                                <p class="cont1">{{kehu.cont1}}</p>
+                                <p class="cont2">{{kehu.cont2}}</p>
+                            </div>
+                        </el-col>
+                    </el-row>
+                </div>
             </div>
             <div class="center-cont-right">
                 <div class="right-title">
@@ -124,6 +184,29 @@ export default {
                 {id:1,cont:'看教程，3分钟玩转营销'},
                 {id:1,cont:'查看常见问题'},
                 {id:1,cont:'反馈问题或提建议'},
+            ],
+            clients:[
+                {id:1,cont1:"平台营销红包",cont2:"多场景高效揽客",className:"el-icon-tickets"},
+                {id:2,cont1:"超级吃货红包",cont2:"精准揽客",className:"el-icon-mobile"},
+                {id:3,cont1:"店铺满减",cont2:"开店必备",className:"el-icon-s-ticket"},
+                {id:4,cont1:"减配送费",cont2:"引流下单",className:"el-icon-s-opportunity"},
+                {id:5,cont1:"扫码领红包",cont2:"线下引流线上",className:"el-icon-menu"},
+            ],
+            dindans:[
+                {id:1,cont1:"商品活动",cont2:"推新品爆款",className:'el-icon-s-shop'},
+                {id:1,cont1:"进店领红包",cont2:"促下单",className:'el-icon-mobile'},
+                {id:1,cont1:"门店新客立减",cont2:"新客转化",className:'el-icon-s-custom'},
+                {id:1,cont1:"店铺满赠",cont2:"提成交",className:'el-icon-s-shop'},
+            ],
+            kedans:[
+                {id:1,cont1:'超值换购',cont2:'提升客单价',className:"el-icon-s-claim"}
+            ],
+            fugous:[
+                {id:1,cont1:"下单返红包",cont2:"回头客",className:"el-icon-document-remove"},
+                {id:1,cont1:"焦点返红包",cont2:"提复购频次",className:"el-icon-document-remove"},
+            ],
+            kehus:[
+                {id:1,cont1:"精准管理",cont2:"",className:"el-icon-s-custom"}
             ]
         };
     },
@@ -322,10 +405,64 @@ export default {
                         }
                     }
                 }
+                
             }
+            .market-client{
+                margin-top: 20px;
+                .client-title{
+                    color: #000;
+                    font-size: 18px;
+                }
+                    .el-row {
+                        margin-bottom: 20px;
+                        &:last-child {
+                        margin-bottom: 0;
+                        }
+                    }
+                    .el-col {
+                        border-radius: 4px;
+                        margin-top: 10px;
+                    }
+                    .bg-purple-dark {
+                        background: #fff;
+                    }
+                    .bg-purple {
+                        background: #fff;
+                    }
+                    .bg-purple-light {
+                        background: #fff;
+                    }
+                    .grid-content {
+                        border: 1px solid #999;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+                        width: 125px;
+                        border-radius: 4px;
+                        min-height: 85px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        i{
+                            color:skyblue;
+                            font-size: 18px;
+                        }
+                        .cont1{
+                            color: #000;
+                            font-size: 14px;
+                            margin: 5px 0;
+                        }
+                        .cont2{
+                            font-size: 12px;
+                        }
+                    }
+                    .row-bg {
+                        padding: 10px 0;
+                        background-color: #f9fafc;
+                    }
+                }
         }
         .center-cont-right{
-            margin-left: 25px;
+            margin-left: 35px;
             .right-title{
                 display: flex;
                 align-items: center;
