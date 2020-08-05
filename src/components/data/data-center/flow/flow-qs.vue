@@ -1,7 +1,11 @@
 <!--  -->
 <template>
-<div class="flow-qs">
+<div class="">
     
+        <div class="flow-qs">
+            <v-echart ref="chart1" :options="orgOptions" id="qs" ></v-echart>
+
+        </div>
 </div>
 </template>
 
@@ -12,17 +16,101 @@
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {},
-// props:['flowQs','xAxis'],
+props:['flowqs','xAxis','isPersent'],
 data() {
 //这里存放数据
-return {
-
-};
+return { 
+}
 },
 //监听属性 类似于data概念
-computed: {},
+computed: {
+    orgOptions:function(){
+        return {
+                    legend: {
+                        data: ['我的门店', '商圈同行均值']
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            label: {
+                                backgroundColor: '#6a7985'
+                            }
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: this.xAxis
+                    },
+                    yAxis: {
+                        type: 'value',
+                        axisLabel:{
+                            show:true,
+                            formatter:(value)=>{
+                                return this.isPersent?value + " %": value;
+                            }
+                        }
+                    },
+                    series: [
+                        {
+                        data: this.flowqs.myShop,
+                        type: 'line',
+                        smooth: true,
+                        name:"我的门店",
+                        areaStyle:{
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [
+                                        {
+                                        offset: 0, color: '#66B1FC' // 0% 处的颜色
+                                        }, 
+                                        {
+                                        offset: 1, color: '#ffffff' // 100% 处的颜色
+                                        }
+                                    ],
+                                    global: false // 缺省为 false
+                                }
+                            }
+                        },
+                        {
+                            data: this.flowqs.sameShop,
+                            type: 'line',
+                            smooth: true,
+                            name:"商圈同行均值",
+                            areaStyle:{
+                                    color: {
+                                    type: 'linear',
+                                    colorStops: [
+                                        {
+                                        offset: 0, color: '#ffffff' // 0% 处的颜色
+                                        }, 
+                                        {
+                                        offset: 1, color: '#ffffff' // 100% 处的颜色
+                                        }
+                                    ],
+                                    global: false // 缺省为 false
+                                }
+                            }
+                        },
+                    ]
+                }
+    }
+
+},
 //监控data中的数据变化
-watch: {},
+watch: {
+},
 //方法集合
 methods: {
 
@@ -33,7 +121,6 @@ created() {
 },
 //生命周期 - 挂载完成（可以访问DOM元素）
 mounted() {
-
 },
 beforeCreate() {}, //生命周期 - 创建之前
 beforeMount() {}, //生命周期 - 挂载之前
@@ -45,9 +132,11 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style lang='less' scoped>
-.flow-qs{
+.flow-qs,#qs{
     width: 860px;
     height: 400px;
-    background-color: rgb(223, 150, 150);
+    h3{
+        margin-bottom: 30px;
+    }
 }
 </style>
