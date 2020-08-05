@@ -5,8 +5,9 @@ import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
 import  'echarts/lib/chart/line'
+Vue.prototype.$store = store
 Vue.component('v-echart', ECharts)
-// element-ui
+
 import {
   Button, 
   Select,
@@ -40,7 +41,9 @@ import {
   Table,
   TableColumn,
   Option,
-  PageHeader
+  PageHeader,
+  DatePicker,
+  
 } from 'element-ui';
 
 Vue
@@ -78,6 +81,7 @@ Vue
   .use(TableColumn)
   .use(Option)
   .use(PageHeader)
+  .use(DatePicker)
 
 Vue.config.productionTip = false
 
