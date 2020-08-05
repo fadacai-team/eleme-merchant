@@ -27,11 +27,13 @@
                         </div>
                     </section>
                     <section v-show="item.table">
+                    
 
                     </section>
                 </div>
                 
             </div>
+            <echarts></echarts>
         </div>
         
     </div>
@@ -39,10 +41,13 @@
 
 <script>
 import dataTable from "@/components/cumstomer/tabs-table"
+import echarts from "@/components/cumstomer/bingtu"
+
 export default {
     name:'',
     components: {
         dataTable,
+        echarts
     },
     props:["dataList",'dataCus'],
     data() {
