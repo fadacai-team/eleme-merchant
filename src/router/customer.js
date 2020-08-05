@@ -1,8 +1,8 @@
 export default[
     {
-        path: '/customer',
-        component: () => import ('../views/Customer/Customer.vue'),
-        name: 'customer',
+        path: '/customer/analyze',
+        component: () => import ('../views/Customer/Analyze.vue'),
+        name: 'analyze',
     },
     {
         path: '/customer/behavior',

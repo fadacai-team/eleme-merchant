@@ -1,6 +1,6 @@
 export default[
     {
-        path: '/tickets',
+        path: '/tickets/manage',
         component: () => import ('../views/Tickets/Ticket.vue'),
         name: 'ticket',
     },
@@ -15,14 +15,15 @@ export default[
         name: 'voucher',
     },
     {
-        path: '/tickets/distribution',
-        component: () => import ('../views/Tickets/Distribution.vue'),
-        name: 'distribution ',
-    },
-    {
         path: '/tickets/combination',
         component: () => import ('../views/Tickets/Combination.vue'),
         name: 'combination',
     },
+    {
+        path: '/tickets/distribution',
+        component: () => import ('../views/Tickets/Distribution.vue'),
+        name: 'distribution',
+    },
+
     
 ]

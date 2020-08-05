@@ -73,13 +73,17 @@ export default {
           name: "外卖券",
           router: "/ticket",
           icon: "el-icon-s-ticket",
-          childList: [{ name: "demo", router: "/goods/demo" }]
+          childList: [{ name: "外卖券管理", router: "/tickets/manage"}]
         },
         {
           name: "顾客",
           router: "/customer",
           icon: "el-icon-s-custom",
-          childList: [{ name: "demo", router: "/customer/demo" }]
+          childList: [
+              { name: "顾客分析", router: "/customer/analyze" },
+              { name: "顾客画像", router: "/customer/behavior" },
+              { name: "顾客评价", router: "/customer/evaluate" }
+            ]
         },
         {
           name: "营销",

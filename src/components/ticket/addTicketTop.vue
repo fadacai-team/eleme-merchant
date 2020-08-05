@@ -31,7 +31,7 @@
                     <div class="dt">配送券名称</div>
                     <div class="dd">
                         <p>配送券名称由"店铺名+Y张满X减N代金券/无i ]槛N元配送券”组成</p>
-                        <p>店铺名</p>
+                        <p>{{titleName.keywords}}名</p>
                         <div class="shop-name">
                             <input type="text" placeholder="斟沏茶咖(杨村店)">
                         </div>
@@ -39,7 +39,7 @@
                     </div>
                 </li>
                 <li class="tickets">
-                    <div class="dt">配送券</div>
+                    <div class="dt">{{titleName.title}}</div>
                     <div class="dd">
                         <div class="dl">
                             <p>使用门槛</p>
