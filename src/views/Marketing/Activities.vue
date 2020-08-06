@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        
+        <markettop></markettop>
     </div>
 </div>
 </template>
@@ -108,10 +108,13 @@
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
+import markettop from "../../components/marketing/Marketing1"
 const cityOptions = ['商品折扣', '商品特价(含超值换购)','商品买赠','商品立减','限量抢购','0元试吃','店铺满减','店铺满赠','门店新客立减']
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {},
+components: {
+    markettop
+},
 data() {
 //这里存放数据
 return {
