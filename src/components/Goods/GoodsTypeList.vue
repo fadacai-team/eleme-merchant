@@ -9,8 +9,8 @@
             <span>删除</span>
           </div>
           <div class="new">
-            <router-link to="#" class="link">新建分类</router-link>
-            <router-link to="#" class="link">新建商品</router-link>
+            <router-link to="/goods/newtype" class="link">新建分类</router-link>
+            <router-link to="/goods/newgood" class="link">新建商品</router-link>
           </div>
         </div>
         <showGoods :itemList="item.itemList"/>
@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import showGoods from "@/components/Goods/showGoods.vue"
+import showGoods from "@/components/Goods/ShowGoods.vue"
 export default {
   name:"GoodsTypeList",
   components:{
