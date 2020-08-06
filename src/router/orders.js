@@ -7,7 +7,12 @@ export default[
     {
         path: '/orders/property',
         component: () => import ('../views/Orders/PropertyCenter.vue'),
-        name: 'ocenter',
+        name: 'property',
+    },
+    {
+        path: '/orders/property/cantcompe',
+        component: () => import ('../components/order/cantCompensate.vue'),
+        name: 'cantcompe',
     },
     {
         path: '/orders/process',

@@ -1,21 +1,27 @@
 <!-- 配送券 -->
 <template>
 <div class='distribution'>
-    配送券
+    <titleTop :titleName='titleArr[1]'></titleTop>
 </div>
 </template>
 
 <script>
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
-
+import titleTop from "../../components/ticket/addTicketTop"
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {},
+components: {
+    titleTop,
+},
 data() {
 //这里存放数据
 return {
-
+    titleArr:[
+        {title:"代金券",keywords:"店铺"},
+        {title:"配送券",keywords:"配送券"},
+        {title:"组合券",keywords:"组合券"},
+        ]
 };
 },
 //监听属性 类似于data概念

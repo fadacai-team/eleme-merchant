@@ -3,8 +3,16 @@ import App from './App.vue'
 import router from './router/index' 
 import store from './store'
 import axios from './common/myaxios'
+import ECharts from 'vue-echarts'
+import  'echarts/lib/chart/line'
+import 'echarts/lib/chart/bar'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/title'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/component/legendScroll'
 
-// element-ui
+Vue.component('v-echart', ECharts)
+
 import {
   Button, 
   Select,
@@ -46,7 +54,13 @@ import {
   MessageBox,
   Loading,
   Message,
-  Notification
+  Notification,
+  PageHeader,
+  DatePicker,
+  
+  badge,
+  rate,
+  tag
 } from 'element-ui';
 
 Vue
@@ -83,13 +97,13 @@ Vue
   .use(Table)
   .use(TableColumn)
   .use(Option)
-  .use(OptionGroup)
-  .use(Upload)
-  .use(Dialog)
+  .use(PageHeader)
   .use(DatePicker)
   .use(Badge)
   .use(Loading.directive)
-
+  .use(badge)
+  .use(rate)
+  .use(tag)
 Vue.config.productionTip = false
 
 Vue.prototype.$loading = Loading.service;
@@ -100,6 +114,10 @@ Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 
+
+Vue.config.productionTip = false
+
+Vue.prototype.$axios = axios;
 new Vue({
   router,
   store,

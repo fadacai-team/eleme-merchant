@@ -1,16 +1,14 @@
-<!-- 顾客 -->
 <template>
-<div class=''></div>
+  <div>
+    <h2>商品详情</h2>
+  </div>
 </template>
 
 <script>
-
 export default {
-    name:'',
+    name:'Goods',
     components: {},
-    data() {
-        return {};
-    },
+    data() {},
     computed: {},
     watch: {},
     methods: {},
@@ -25,6 +23,6 @@ export default {
     activated() {},
 }
 </script>
-<style lang='less'  scoped>
+<style lang='scss'  scoped>
 
 </style>

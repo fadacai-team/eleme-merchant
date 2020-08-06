@@ -6,7 +6,7 @@
         <!-- 今日实时看板头部开始 -->
         <div class="today-timing-top">
             <div>
-                <p v-for="(item,index) in nav" :key="item+index" :class="{'nav-active':isNavActive}"><span>{{item.name}}</span></p>
+                <p v-for="(item,index) in nav" :key="item+index" :class="{'nav-active':item.isNavActive}"><span>{{item.name}}</span></p>
             </div>
             <ul>
             <li>时间</li>
@@ -239,11 +239,9 @@ export default {
                 background-color: rgb(220, 203, 203);
                 >.today-timing-formula {
                     display: flex;
-                    justify-content: start;
                     align-items: center;
                     >span{
                         display: flex;
-                        justify-content: start;
                         align-items: center;
                         flex-direction: column;
                         margin-left: 30px;

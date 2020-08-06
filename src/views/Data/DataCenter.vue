@@ -99,7 +99,6 @@ export default {
 
         ul {
             display: flex;
-            justify-content: start;
             padding-top: 20px;
             border-bottom: 2px solid rgb(228,231,237);
             li {
