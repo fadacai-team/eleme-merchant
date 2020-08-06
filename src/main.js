@@ -47,13 +47,22 @@ import {
   Table,
   TableColumn,
   Option,
-  PageHeader,
+  OptionGroup,
+  Upload,
+  Dialog,
   DatePicker,
   Dialog,
-  badge,
+  Loading,
+  Badge,
+  MessageBox,
+  Message,
+  Notification,
+  PageHeader,
   rate,
   tag,
-  Loading
+  Switch,
+  Checkbox,
+  CheckboxGroup,
 } from 'element-ui';
 
 Vue
@@ -92,11 +101,28 @@ Vue
   .use(Option)
   .use(PageHeader)
   .use(DatePicker)
+  .use(Badge)
+  .use(Upload)
+  .use(Dialog)
+  .use(OptionGroup)
+  .use(Switch)
+  .use(Checkbox)
+  .use(CheckboxGroup,)
+  .use(Loading.directive)
   .use(badge)
   .use(rate)
   .use(tag)
-  .use(Dialog)
   .use(Loading)
+Vue.config.productionTip = false
+
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
+
 
 Vue.config.productionTip = false
 
