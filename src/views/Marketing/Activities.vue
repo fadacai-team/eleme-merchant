@@ -61,8 +61,9 @@ watch: {},
 //方法集合
 methods: {
     open:function(){
-        this.$alert('<div class="block"><el-date-picker v-model="value1" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker></div>', {
+        this.$alert('<div class="block"><h1>123</h1></div>', {
         confirmButtonText: '确定',
+        dangerouslyUseHTMLString: true,
         callback: action => {
             this.$message({
             type: 'info',
@@ -70,6 +71,9 @@ methods: {
             });
         }
         });
+        //  this.$alert('<strong>这是 <i>HTML</i> 片段</strong>', 'HTML 片段', {
+        //   dangerouslyUseHTMLString: true
+        // });
     }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
