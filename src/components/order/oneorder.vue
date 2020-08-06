@@ -52,20 +52,20 @@
                 <i class="el-icon-wind-power"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
-                <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
+
                 <div class="clearfix el-col el-col-23">
-<transition name="timeline">
-                    <ul class="el-timeline" :class="{'hide':timelinestate}">
+                    <ul class="el-timeline">
                         <li class="el-timeline-item">
                             <div class="el-timeline-item__tail"></div>
                             <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
                             <div class="el-timeline-item__wrapper">
-                                <div class="el-timeline-item__timestamp is-bottom">{{order.settledTime | formatDate(order.settledTime,'mm:ss')}}</div>
+                                <div class="el-timeline-item__timestamp is-bottom">{{ order.settledTime | formatDate("mm:ss") }}</div>
                                 <div class="el-timeline-item__content"> {{order.statusForPrint}} </div>
                             </div>
                         </li>
-                            <li  class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
+<transition name="timeline">
+                        <div id="timeline-wraper" v-show="!timelinestate" >
+                            <li   class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
                                 <div class="el-timeline-item__tail"></div>
                                 <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
                                 <div class="el-timeline-item__wrapper">
@@ -73,8 +73,11 @@
                                     <div class="el-timeline-item__content"> {{item.status.message}} </div>
                                 </div>
                             </li>
-                    </ul>
+                        </div>
 </transition>
+                <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
+                <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
+                    </ul>
                 </div>
 
             </el-col>
@@ -159,9 +162,10 @@ export default {
     components: {},
     filters:{
         formatDate(time,fm) {
+            console.log(fm)
             fm = fm?fm:"yyyy-MM-dd hh:mm";
             let date = new Date(time)
-            return formatDate( 'yyyy-MM-dd hh:mm',date);
+            return formatDate( fm ,date);
         },
         formatMoney(money){
             return parseFloat(money).toFixed(2)
@@ -180,6 +184,9 @@ export default {
     computed: {},
     watch: {},
     methods: {
+        toggleTimeline:function(){
+            
+        }
     },
     created() {},
     mounted() {
@@ -284,7 +291,7 @@ export default {
                         left: 10px;
                     }
                 }
-                li:first-child{
+                >li:first-child{
                     .el-timeline-item__node{
                         background-color: #1989fa;
                     }
@@ -353,26 +360,16 @@ export default {
     
 }
 
-@keyframes hide{
-    0%{
-        height: 20px;
-        opacity: 1;
-    }
-    100%{
-        height: 0;
-        opacity: 0;
-    }
-}
-.timeline-enter-active{
-    animation: hide 2s  reverse;
+#timelin-wraper{
     overflow: hidden;
 }
-.timeline-leave-active{
-    animation: hide 2s ;
+.timeline-enter-active,.timeline-leave-active{
+    max-height: 600px;
     overflow: hidden;
+    transition: all .5s ease-in-out;
 }
-.hide{
-    height: 20px;
+.timeline-enter,.timeline-leave-to{
+    max-height: 0px;
     overflow: hidden;
 }
 </style>
