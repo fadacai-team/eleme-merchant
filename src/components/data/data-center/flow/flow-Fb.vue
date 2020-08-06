@@ -58,5 +58,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 <style lang='less' scoped>
     .floefb{
         width: 860px;
+        height: 300px;
+        overflow: auto;
     }
 </style>

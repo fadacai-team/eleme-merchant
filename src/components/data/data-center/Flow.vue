@@ -16,7 +16,7 @@
                 <el-tabs type="card"  v-model="activeSonZh">
                     <el-tab-pane v-for="(item,index) in flowZh[1].bottomLabel" :label="item" :name="index+''" :key="item"></el-tab-pane>
                 </el-tabs>
-                <flownewuser></flownewuser>
+                <flownewuser :secondData="flowZh[1].flowZhArr[activeSonZh].userArr"></flownewuser>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -35,7 +35,7 @@
                     </el-tabs>
                 </el-tab-pane>
         </el-tabs> -->
-        <el-tabs v-model="activeFatherQs">
+        <el-tabs v-model="activeFatherQs" type="card">
             <el-tab-pane v-for="(item,index) in flowQs" :name="index+''" :label="item.label" :key="item.name"></el-tab-pane>
             <!-- 第一次优化 -->
             <!-- <el-tab-pane name="0" label="今天"></el-tab-pane>
@@ -55,12 +55,19 @@
 
     <div>
         <h3>流量分布</h3>
-        <el-tabs   v-model="activeFatherFb" type="card">
+        
+        <div class="flow-top">
+            <el-tabs   v-model="activeFatherFb" type="card" class="flow-top-left">
                 <el-tab-pane v-for="(item,index) in flowFb" :key="item.name" :label="item.label" :name="index+''" ></el-tab-pane>
-        </el-tabs>
+            </el-tabs>
+            <p>时间</p>
+        </div>
+
+
         <el-tabs v-model="activeSonFb" >
             <el-tab-pane v-for="(item,index) in flowFb[0].bottomLabel" :key="item" :label="item" :name="index+''"></el-tab-pane>
         </el-tabs>
+
         <flowfb :flowfb.sync="flowFb[activeFatherFb].flowFbArr[activeSonFb].data" :axis="flowFb[activeFatherFb].flowFbArr[activeSonFb].Axis"></flowfb>
         
     </div>
@@ -83,6 +90,7 @@ data() {
     return {
         activeFatherZh:0,
         activeSonZh:0,
+
         activeFatherQs:0,
         activeSonQs:0,
         activeFatherFb:0,
@@ -189,7 +197,54 @@ data() {
                     label:'新顾客',
                     bottomLabel:['昨天','近七天','近30天'],
                     flowZhArr:[
-
+                        {userArr:{
+                            new:[
+                                {value: ['9人','12次']},
+                                {value: ['5人','9次']},
+                                {value: ['4人','8次']},
+                                {value: ['3人','5次']},
+                                {value: ['6人','18次']}
+                            ],
+                            old:[
+                                {value: ['3人','2次']},
+                                {value: ['5人','3次']},
+                                {value: ['3人','3次']},
+                                {value: ['2人','0次']},
+                                {value: ['0人','0次']}
+                            ]
+                        }},
+                        {userArr:{
+                            new:[
+                                {value: ['56人','84次']},
+                                {value: ['30人','63次']},
+                                {value: ['20人','36次']},
+                                {value: ['15人','25次']},
+                                {value: ['6人','18次']}
+                            ],
+                            old:[
+                                {value: ['21人','14次']},
+                                {value: ['35人','21次']},
+                                {value: ['21人','21次']},
+                                {value: ['14人','5次']},
+                                {value: ['7人','2次']}
+                            ]
+                        }},
+                        {userArr:{
+                            new:[
+                                {value: ['270人','84次']},
+                                {value: ['150人','63次']},
+                                {value: ['120人','56次']},
+                                {value: ['90人','35次']},
+                                {value: ['60人','18次']}
+                            ],
+                            old:[
+                                {value: ['90人','60次']},
+                                {value: ['150人','50次']},
+                                {value: ['90人','30次']},
+                                {value: ['60人','15次']},
+                                {value: ['20人','10次']}
+                            ]
+                        }},
                     ]
                 }
         ],
@@ -311,8 +366,7 @@ data() {
                 bottomLabel:['整体流量','自然流量','广告流量'],
                 flowFbArr:[
                     {
-                        name1:'first',
-                        label1:'整体流量',
+            
                         Axis:['曝光入口','访问次数','访问人数','下单次数','下单人数','下单转化率'],
                         data:[
                                 {
@@ -366,8 +420,7 @@ data() {
                             ],
                     },
                     {
-                        name1:'second',
-                        label1:'自然流量',
+                    
                         Axis:['曝光入口','访问次数','访问人数','下单次数','下单人数','下单转化率'],
                         data:
                             [
@@ -423,8 +476,7 @@ data() {
                         
                     },
                     {
-                        name1:'third',
-                        label1:'广告流量',
+                        
                         Axis:['推广类型','访问次数','点击成本'],
                         data:[{
                             num0:'竞价推广',
@@ -439,8 +491,7 @@ data() {
                 label:'近7天',
                 flowFbArr:[
                     {
-                        name1:'first',
-                        label1:'整体流量',
+                        
                         Axis:['曝光入口','访问次数','访问人数','下单次数','下单人数','下单转化率'],
                         data:[
                                 {
@@ -494,8 +545,7 @@ data() {
                             ],
                     },
                     {
-                        name1:'second',
-                        label1:'自然流量',
+                        
                         Axis:['曝光入口','访问次数','访问人数','下单次数','下单人数','下单转化率'],
                         data:
                             [
@@ -551,8 +601,7 @@ data() {
                         
                     },
                     {
-                        name1:'third',
-                        label1:'广告流量',
+                        
                         Axis:['推广类型','访问次数','点击成本'],
                         data:[{
                             num0:'竞价推广',
@@ -724,6 +773,14 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     margin: 0 auto;
     >div{
         margin-top: 30px;
+        >.flow-top{
+            display: flex;
+            justify-content: space-between;
+            >el-tabs{
+            }
+            >p{
+            }
+        }
     }
 }
 </style>

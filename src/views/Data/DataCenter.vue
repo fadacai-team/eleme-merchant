@@ -29,7 +29,7 @@ export default {
             dataCenter:[
                 {
                     name:'总览',
-                    isdataActive:true,
+                    isdataActive:false,
                     componentName:'overview'
                 },
                 {
@@ -44,7 +44,7 @@ export default {
                 },
                 {
                     name:'流量',
-                    isdataActive:false,
+                    isdataActive:true,
                     componentName:'flow'
                 },
                 {
@@ -58,7 +58,7 @@ export default {
                     componentName:'servering'
                 },
             ],
-            componentId:'overview'
+            componentId:'flow'
         }
     },
     computed: {},
