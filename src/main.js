@@ -5,6 +5,8 @@ import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
 import  'echarts/lib/chart/line'
+import  'echarts/lib/chart/pie'
+import  'echarts/lib/chart/bar'
 Vue.prototype.$store = store
 Vue.component('v-echart', ECharts)
 
@@ -41,6 +43,8 @@ import {
   Table,
   TableColumn,
   DatePicker,
+  Upload,
+  Dialog,
   
 } from 'element-ui';
 
@@ -78,6 +82,8 @@ Vue
   .use(Table)
   .use(TableColumn)
   .use(DatePicker)
+  .use(Upload)
+  .use(Dialog)
 
 Vue.config.productionTip = false
 
