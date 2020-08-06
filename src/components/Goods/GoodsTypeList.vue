@@ -15,16 +15,7 @@
         </div>
         <showGoods :itemList="item.itemList"/>
       </el-tab-pane>
-      <!-- <div class="addType">
-        <el-button
-          size="small"
-          @click="addTab(editableTabsValue)"
-        >
-          新建分类
-        </el-button>
-      </div> -->
     </el-tabs>
-
   </div>
 </template>
 <script>
