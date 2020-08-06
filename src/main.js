@@ -10,7 +10,7 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/legendScroll'
-
+import printJS from 'print-js'
 Vue.component('v-echart', ECharts)
 
 import {

@@ -1,8 +1,8 @@
 
 <!-- 订单 -->
 <template>
-<div class="box-card order">
-    <el-row class="order-header">
+<div :id="'order'+order.id"  class="box-card order clearfix">
+    <el-row id="no-print"  class="order-header">
         <el-col class="order-index" :span="1">
             {{order.daySn}}
         </el-col>
@@ -75,8 +75,8 @@
                             </li>
                         </div>
 </transition>
-                <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
-                <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
+                <el-button  id="no-print" v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
+                <el-button   id="no-print" v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
                     </ul>
                 </div>
 
@@ -93,15 +93,15 @@
                 <el-row class="items" v-for="group in order.newGroups" :key="group.type">
 <transition name="productions">
                     <div id="productions-wrapper" v-show="productionstate">
-                        <section v-for="item in group.items" :key="item.vfoodId">
+                        <section class="item" v-for="item in group.items" :key="item.vfoodId">
                             <el-col :span="8" class="name">{{item.name}}</el-col>
                             <el-col :span="14" class="count">x{{item.quantity}}</el-col>
                             <el-col :span="2" class="price">{{parseFloat(item.price).toFixed(2)}}</el-col>
                         </section>
                     </div>
 </transition>
-                <el-button v-if="productionstate" @click="productionstate=!productionstate" type="text" class="open-btn">合并</el-button>
-                <el-button v-else @click="productionstate=!productionstate" type="text" class="open-btn">展开</el-button>
+                <el-button  id="no-print" v-if="productionstate" @click="productionstate=!productionstate" type="text" class="open-btn">合并</el-button>
+                <el-button  id="no-print" v-else @click="productionstate=!productionstate" type="text" class="open-btn">展开</el-button>
 
                 </el-row>
                 <el-divider></el-divider>
@@ -153,8 +153,8 @@
                         <p>单号 : {{order.id}}</p>
                     </el-col>
                     <el-col :span="16" class="btns">
-                        <el-button>打印</el-button>
-                        <el-button>订单退款</el-button>
+                        <el-button  id="no-print" @click="getPrint">打印</el-button>
+                        <el-button  id="no-print">订单退款</el-button>
                     </el-col>
                 </section>
             </el-col>
@@ -179,9 +179,8 @@
 
 <script>
 import formatDate from '@/utils/date.js'
-
 import AMapLoader from '@amap/amap-jsapi-loader';
-
+ import print from 'print-js'
 
 export default {
     name:'',
@@ -217,6 +216,28 @@ export default {
     watch: {
     },
     methods: {
+        getPrint:function(){
+            this.timelinestate=true
+            this.productionstate=true
+            setTimeout(()=>{
+                printJS({
+                    printable: 'order'+this.order.id,
+                    type: 'html',
+                    //properties: [
+                    //    { field: 'name', displayName: '姓名', columnSize:`50%`},
+                    //    { field: 'sex', displayName: '性别',columnSize:`50%`},
+                    //],
+                    // header: `<p class="custom-p"> 名单 </p>`,
+                    // style: '#printCons {width: 600px;} .no-print{width: 0px} .itemText1 { width: 200px } .itemText2 { width: 200px } .itemText3 { width: 200px } .itemText4 { width: 200px }',
+                    // gridHeaderStyle:'font-size:12px; padding:3px; border:1px solid; font-weight: 100; text-align:left;',
+                    // gridStyle:'font-size:12px; padding:3px; border:1px solid; text-align:left;',
+                    // repeatTableHeader: true,
+                    scanStyles:true,
+                    targetStyles: ['*'],
+                    ignoreElements:['no-print','bc','gb']
+                })
+            },1000)
+        },
         goCenter:function(){
             console.log(this.thismap)
             this.thismap.setFitView();
@@ -241,16 +262,16 @@ export default {
                 center:[(_this.originPoint[0]+_this.endPoint[0])/2,(_this.originPoint[1]+_this.endPoint[1])/2],
                 zoom: 14
             });
-                var m3 = new AMap.Marker({
-                    position:_this.qishouPosition,
-                    icon: new AMap.Icon({
-                        size:new AMap.Size(40,40),
-                        image: require('../../assets/images/qishou.png'),
-                        imageSize: new AMap.Size(40, 40),
-                        anchor: 'center',
-                    })
-                });
-                thismap.add(m3)
+            var m3 = new AMap.Marker({
+                position:_this.qishouPosition,
+                icon: new AMap.Icon({
+                    size:new AMap.Size(40,40),
+                    image: require('../../assets/images/qishou.png'),
+                    imageSize: new AMap.Size(40, 40),
+                    anchor: 'center',
+                })
+            });
+            thismap.add(m3)
                 var ridingOption = {
                     map: thismap,
                     // panel: "panel",
@@ -281,7 +302,7 @@ export default {
     },
     created() {},
     mounted() {
-
+        console.dir(printJS)
     },
     beforeCreate() {},
     beforeMount() {},
@@ -300,10 +321,10 @@ export default {
 .order{
     margin-top: 20px;
     border-radius: 6px;
-    overflow: hidden;
     box-shadow: 1px 5px 8px #67789975;
     align-items: center;
     line-height: 30px;
+    background-color: white;
     >.el-row{
         padding: 20px;
     }
@@ -374,7 +395,7 @@ export default {
             .el-timeline{
                 transition: .3s ease-in-out;
                 li{
-                    padding-bottom: 34px;
+                    height: 34px;
                     .el-timeline-item__node{
                         top: 4px;
                         left: 4px;
@@ -467,6 +488,9 @@ export default {
 #productions-wrapper{
     overflow: hidden;
     transition: all .5s ease-in-out;
+    .item{
+        height: 26px;
+    }
 }
 .productions-enter-active,.productions-leave-active{
     max-height: 600px;
