@@ -4,45 +4,50 @@
         <!-- 今日实时看板开始 -->
         <div class="overview-today-timing">
         <!-- 今日实时看板头部开始 -->
-        <div class="today-timing-top">
-            <h3>今日实时看板</h3>
-            <ul>
-            <li>时间</li>
-            <li>
-                <span>比昨日</span>
+            <div class="today-timing-top">
+                <h3>今日实时看板</h3>
                 <ul>
-                <li>比昨日</li>
-                <li>比上一周</li>
+                <li>时间</li>
+                <li>
+                    <span>比昨日</span>
+                    <ul>
+                    <li>比昨日</li>
+                    <li>比上一周</li>
+                    </ul>
+                </li>
                 </ul>
-            </li>
-            </ul>
-        </div>
+            </div>
         <!-- 今日实时看板头部结束 -->
         <!-- 图标开始 -->
         <div class="today-timing-table">
-            <ul>
-            <li v-for="(item,index) in todayTiming" :key="item+index" :class="{'today-timing-active':item.isTodayTiming}" @click="todayTimingAna(item,index)">
-                <span>
-                    <span>{{item.name}}</span>
-                    <i>?</i>
-                </span>
-                <em>{{item.mount}}</em>
-                <p>
-                    <span>比上周一</span>
-                    <i v-show="item.float!=''">^</i>
-                    <b>{{item.float}}</b>
-                </p>
+            <el-tabs>
+                <el-tab-pane :name="index+''" v-for="(item,index) in todayTiming" :key="item+index">
+                    <span slot="label">
+                        <li  class="li-active" @click="todayTimingAna(item,index)">
+                            <span>
+                                <span>{{item.name}}</span>
+                                <i>?</i>
+                            </span>
+                            <em>{{item.mount}}</em>
+                            <p>
+                                <span>比上周一</span>
+                                <i v-show="item.float!=''">^</i>
+                                <b>{{item.float}}</b>
+                            </p>
+                        </li>
+                    </span>
+                </el-tab-pane>
+            </el-tabs>
+
+            <div>
                 
-                    
-            </li>
-            </ul>
-            <div></div>
+            </div>
         </div>
         <!-- 图标结束 -->
         </div>
         <!-- 今日实时看板结束 -->
         <!-- 历史数据概览开始 -->
-        <div class="history-data">
+        <!-- <div class="history-data">
             <div class="history-data-top">
                 <h3>历史数据概览</h3>
                 <p>
@@ -62,7 +67,7 @@
                 </div>
                 <div class="history-data-content"></div>
             </div>
-        </div>
+        </div> -->
         <!-- 历史数据概览结束 -->
     </div>
 </template>
@@ -159,143 +164,6 @@ export default {
             }
         }
     
-        .today-timing-table {
-            width: 100%;
-            height: 600px;
-            border:1px solid rgb(135, 132, 132);
-            ul {
-                height: 150px;
-                border-bottom:1px solid rgb(135, 132, 132);
-                display: flex;
-                background-color: #c2cbd8;
-                li {
-                    flex: 1;
-                    border-left:1px solid rgb(135, 132, 132);
-                    display: flex;
-                    justify-content: space-around;
-                    flex-direction: column;
-                    padding-left: 20px;
-                >span {
-                    >span {
-                        color: #666667;
-                        font-size: 16px;
-                        font-weight: 500;
-                    }
-
-                    >i {
-                    }
-                }
-
-                em {
-                    color: #1989FA;
-                    font-size: 16px;
-                    font-weight: bold;
-                }
-
-                >p {
-                        span {
-
-                        }
-
-                        i {
-                        }
-
-                        b {
-                            color: #79C592;
-                        }
-                    }
-                }
-                .today-timing-active{
-                    border-top:2px solid #1989FA;
-                }
-            }
-            >.today-timing-formula-warp{
-                min-height: 40px;
-                padding-top:15px;
-                padding-bottom:15px;
-                background-color: rgb(220, 203, 203);
-                >.today-timing-formula {
-                    display: flex;
-                    align-items: center;
-                    >span{
-                        display: flex;
-                        align-items: center;
-                        flex-direction: column;
-                        margin-left: 30px;
-                        >em{
-                            margin-top: 10px;
-                        }
-                    }
-                }
-            }
-            
-            div {
-
-                }
-            }
-        }
     }
-    
-    .history-data {
-        .history-data-top {
-
-            h3 {
-                color: #303133;
-                font-size: 16px;
-                font-weight: 400;
-            }
-
-            p {
-                height: 30px;
-                line-height: 30px;
-                a {
-                    color:#1A89FA;
-                }
-            }
-
-            .history-data-nav {
-                display: flex;
-                justify-content: space-between;
-                .history-data-nav-right {
-                    display: flex;
-                    p {
-                        padding: 10px 0;
-                        span {
-                            padding-left:15px;
-                            padding-right: 15px;
-                            display: block;
-                            height: 12px;
-                            line-height: 12px;
-                            border-right:1px solid rgb(174, 171, 171)
-                        }
-                    }
-                    >p:last-child{
-                        span{
-                            border:none;
-                        }
-                    }
-                    p:hover{
-                        color:#fff;
-                        background-color: #1989FA;
-                    }
-                    .navActive{
-                        color:#fff;
-                        background-color: #1989FA;
-                    }
-                }
-
-                .history-data-nav-left {
-                    display: flex;
-                    justify-content: space-evenly;
-                    p {
-
-                    }
-                }
-            }
-        }   
-        .history-data-content {
-
-        }
-        
 }
 </style>

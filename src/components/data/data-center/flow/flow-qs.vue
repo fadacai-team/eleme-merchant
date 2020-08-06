@@ -47,10 +47,18 @@ computed: {
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: this.xAxis
+                        data: this.xAxis,  
+                        
+                        axisLine:{
+                            show:false
+                        },
                     },
                     yAxis: {
                         type: 'value',
+                        axisLine:{
+                            show:false
+                        },
+                        scale:true,
                         axisLabel:{
                             show:true,
                             formatter:(value)=>{
@@ -63,7 +71,15 @@ computed: {
                         data: this.flowqs.myShop,
                         type: 'line',
                         smooth: true,
+                        stack:'总量',
                         name:"我的门店",
+                        
+                        lineStyle:{
+                            color:'#1989FA',
+                        },
+                        itemStyle:{
+                            borderWidth:0,
+                        },
                         areaStyle:{
                                 color: {
                                     type: 'linear',
@@ -86,17 +102,25 @@ computed: {
                         {
                             data: this.flowqs.sameShop,
                             type: 'line',
+                            stack:'总量',
                             smooth: true,
                             name:"商圈同行均值",
+                            lineStyle:{
+                                color:'#F5C41D'
+                            },
                             areaStyle:{
                                     color: {
                                     type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
                                     colorStops: [
                                         {
-                                        offset: 0, color: '#ffffff' // 0% 处的颜色
+                                        offset: 0, color: '#F5C41D' // 0% 处的颜色
                                         }, 
                                         {
-                                        offset: 1, color: '#ffffff' // 100% 处的颜色
+                                        offset: 0.5, color: '#ffffff' // 100% 处的颜色
                                         }
                                     ],
                                     global: false // 缺省为 false
@@ -134,9 +158,11 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 <style lang='less' scoped>
 .flow-qs,#qs{
     width: 860px;
+
     height: 400px;
     h3{
         margin-bottom: 30px;
+        color: rgba(170, 41, 218, 0.2);
     }
 }
 </style>
