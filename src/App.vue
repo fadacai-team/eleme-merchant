@@ -3,7 +3,7 @@
     <el-container>
       <el-header><Bar /></el-header>
       <el-container>
-        <el-aside :width="this.$store.getters.menuWidth"><Menu /></el-aside>
+        <el-aside :width="this.$store.state.menuWidth"><Menu /></el-aside>
         <el-main>
           <router-view />
         </el-main>

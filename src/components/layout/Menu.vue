@@ -133,11 +133,11 @@ export default {
       let w = document.documentElement.offsetWidth || document.body.offsetWidth;
       if (w < 1160) {
         that.isCollapse = true;
-        that.$store.getters.menuWidth = "75px";
+        that.$store.state.menuWidth = "75px";
       }
       if (w >= 1160) {
         that.isCollapse = false;
-        that.$store.getters.menuWidth = "200px";
+        that.$store.state.menuWidth = "200px";
       }
     };
   },

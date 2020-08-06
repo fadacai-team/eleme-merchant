@@ -31,7 +31,9 @@ import {
   Tabs,
   TabPane,
   RadioGroup,
-  RadioButton
+  RadioButton,
+  Option,
+  Upload
 } from 'element-ui';
 Vue
   .use(Input)
@@ -60,7 +62,8 @@ Vue
   .use(TabPane)
   .use(RadioGroup)
   .use(RadioButton)
-
+  .use(Option)
+  .use(Upload)
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
