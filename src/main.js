@@ -51,7 +51,6 @@ import {
   Upload,
   Dialog,
   DatePicker,
-  Dialog,
   Loading,
   Badge,
   MessageBox,
@@ -109,7 +108,6 @@ Vue
   .use(Checkbox)
   .use(CheckboxGroup,)
   .use(Loading.directive)
-  .use(badge)
   .use(rate)
   .use(tag)
   .use(Loading)

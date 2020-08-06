@@ -239,7 +239,6 @@ export default {
             },1000)
         },
         goCenter:function(){
-            console.log(this.thismap)
             this.thismap.setFitView();
         },
         getMap:function(){
@@ -302,7 +301,6 @@ export default {
     },
     created() {},
     mounted() {
-        console.dir(printJS)
     },
     beforeCreate() {},
     beforeMount() {},
