@@ -56,11 +56,12 @@ import {
   Message,
   Notification,
   PageHeader,
-  DatePicker,
-  
   badge,
   rate,
-  tag
+  tag,
+  Switch,
+  Checkbox,
+  CheckboxGroup,
 } from 'element-ui';
 
 Vue
@@ -100,6 +101,12 @@ Vue
   .use(PageHeader)
   .use(DatePicker)
   .use(Badge)
+  .use(Upload)
+  .use(Dialog)
+  .use(OptionGroup)
+  .use(Switch)
+  .use(Checkbox)
+  .use(CheckboxGroup,)
   .use(Loading.directive)
   .use(badge)
   .use(rate)
