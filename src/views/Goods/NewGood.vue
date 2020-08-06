@@ -30,6 +30,12 @@
           <el-input v-model="good.name" placeholder="请输入内容"></el-input>
         </div>
       </div>
+      <div class="item">
+        <span>商品价格</span>
+        <div class="input">
+          <el-input v-model="input" placeholder="请输入内容"></el-input>
+        </div>
+      </div>
       <div  class="item">
         <span>商品图片</span>
         <div class="input">
@@ -37,13 +43,11 @@
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
         </div>
-      </div>
-      <div class="item">
-        <span>商品价格</span>
-        <div class="input">
-          <el-input v-model="input" placeholder="请输入内容"></el-input>
-        </div>
-      </div>
+      </div>   
+    </div>
+    <div class="footer">
+      <el-button >取消</el-button>
+      <el-button type="primary" >保存</el-button>
     </div>
   </div>
 </template>
@@ -105,6 +109,11 @@ export default {
         width: 400px;
       }
     }
+  }
+  .footer{
+    margin: 50px auto;
+    width: 100px;
+    display: flex;
   }
 }
 </style>

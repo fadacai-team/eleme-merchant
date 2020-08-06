@@ -4,9 +4,11 @@
       <el-tab-pane v-for="item in typeList" :key="item.id" :label="item.name+'('+item.itemList.length+')'" :name="item.name">
         <div class="header">
           <div class="operate">
-            <span>上架</span>
-            <span>下架</span>
-            <span>删除</span>
+            <el-button-group>
+              <el-button size="small" @click="grounding(item)">上架</el-button>
+              <el-button size="small" @click="underCarriage">下架</el-button>
+              <el-button size="small" @click="deleteGoods">删除</el-button>
+            </el-button-group>
           </div>
           <div class="new">
             <router-link to="/goods/newtype" class="link">新建分类</router-link>
@@ -30,6 +32,25 @@ export default {
     return{
       activeName:this.typeList[0].name
     }
+  },
+  methods:{
+    grounding(){
+      this.$store.state.goodsList.forEach(item => {
+        if (item.isChecked) {
+          item.status="已上架"
+        }
+      })  
+    },
+    underCarriage(){
+      this.$store.state.goodsList.forEach(item => {
+        if (item.isChecked) {
+          item.status="已下架"
+        }
+      })
+    },
+    deleteGoods(){
+      this.$store.state.goodsList = this.$store.state.goodsList.filter(item=>item.isChecked == false)  
+    }
   }
 }
 </script>
@@ -41,14 +62,6 @@ export default {
       justify-content:flex-end;
       .operate{
         width: 180px;
-        span{
-          width: 60px;
-          height: 30px;
-          display: inline-block;
-          text-align: center;
-          line-height: 30px;
-          border: 1px solid #dedfe3;
-        }
       }
       .new{
         width: 240px;

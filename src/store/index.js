@@ -16,8 +16,10 @@ export default new Vuex.Store({
     goodsList:[
       {id:1,name:"杨枝甘露",repertory:99,price:9.9,sales:0,status:"已下架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
       {id:2,name:"鲜橙茶",repertory:99,price:9.9,sales:0,status:"已上架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
-      {id:3,name:"百香果茶",repertory:0,price:9.9,sales:0,status:"已上架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
-      {id:4,name:"芒果沙冰",repertory:99,price:9.9,sales:0,status:"待上架",img:require("@/assets/home/serve1.jpg"),type:"沙冰",isChecked:false}
+      {id:3,name:"百香果茶",repertory:99,price:9.9,sales:0,status:"已上架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
+      {id:4,name:"哈密瓜茶",repertory:99,price:9.9,sales:0,status:"已下架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
+      {id:5,name:"柠檬茶",repertory:0,price:9.9,sales:0,status:"待上架",img:require("@/assets/home/serve1.jpg"),type:"鲜果茶",isChecked:false},
+      {id:6,name:"芒果沙冰",repertory:99,price:9.9,sales:0,status:"已上架",img:require("@/assets/home/serve1.jpg"),type:"沙冰",isChecked:false}
     ],
   },
   getters:{

@@ -14,4 +14,9 @@ export default[
     component: () => import ('../views/Goods/NewGood.vue'),
     name: 'NewGood',
   },
+  {
+    path: '/goods/editgood',
+    component: () => import ('../views/Goods/EditGood.vue'),
+    name: 'EditGood',
+  },
 ]

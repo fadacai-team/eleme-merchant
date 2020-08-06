@@ -31,7 +31,6 @@ export default {
   methods: {
     gotoPage(index) {
       this.currentIndex = index;
-      console.log(this.currentIndex);
     },
   },
   mounted:function(){

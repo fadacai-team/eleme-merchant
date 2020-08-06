@@ -33,7 +33,8 @@ import {
   RadioGroup,
   RadioButton,
   Option,
-  Upload
+  Upload,
+  ButtonGroup
 } from 'element-ui';
 Vue
   .use(Input)
@@ -64,6 +65,7 @@ Vue
   .use(RadioButton)
   .use(Option)
   .use(Upload)
+  .use(ButtonGroup)
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;

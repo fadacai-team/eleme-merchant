@@ -43,7 +43,7 @@ export default {
   components: {},
   data() {
     return {
-      isCollapse: false,
+      isCollapse: (document.documentElement.offsetWidth<1160 || document.body.offsetWidth<1160)?true:false,
       isRouter: true,
       menulist: [
         {

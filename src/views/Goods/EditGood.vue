@@ -1,32 +1,47 @@
 <template>
-  <div class="new-type">
+  <div class="new-good">
     <div class="exchange-top">
       <div class="back">
+        <i></i>
         <span @click="backRouter">返回</span>
         <b>|</b>
       </div>
-      <h2 class="title">
-          新建分类
-      </h2>
+      <h2 class="title">编辑商品</h2>
     </div>
     <div class="content">
       <div class="item">
-        <span>分类名称*</span>
+        <span>商品分类*</span>
+        <div class="input">
+          <el-select v-model="value" placeholder="请选择">
+            <el-option
+              v-for="item in this.$store.state.goodsTypeList"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id">
+            </el-option>
+          </el-select>
+        </div>
+      </div>
+      <div class="item">
+        <span>商品名称</span>
+        <div class="input">
+          <el-input v-model="good.name" placeholder="请输入内容"></el-input>
+        </div>
+      </div>
+      <div class="item">
+        <span>商品价格</span>
         <div class="input">
           <el-input v-model="input" placeholder="请输入内容"></el-input>
         </div>
       </div>
-      <div class="item">
-        <span>分类描述</span>
+      <div  class="item">
+        <span>商品图片</span>
         <div class="input">
-          <el-input
-            type="textarea"
-            :autosize="{ minRows: 2, maxRows: 2}"
-            placeholder="请输入内容"
-            v-model="textarea">
-          </el-input>
+          <el-upload class="upload" action="https://jsonplaceholder.typicode.com/posts/">
+            <el-button size="small" type="primary">更换图片</el-button>
+          </el-upload>
         </div>
-      </div>
+      </div>   
     </div>
     <div class="footer">
       <el-button >取消</el-button>
@@ -37,13 +52,12 @@
 
 <script>
 export default {
-  name:"NewType",
+  name:"NewGood",
   components: {},
   data() {
     return {
-      
-      input:"",
-      textarea:""
+      value:"",
+      good:{}
     }
   },
   methods: {
@@ -54,7 +68,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.new-type{
+.new-good{
   .exchange-top {
     font-size: 12px;
     border-bottom: 2px solid #E7EAEF;
