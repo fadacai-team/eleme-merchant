@@ -31,7 +31,7 @@
                 <div class="order-position">
                     <span class="tip">{{order.consigneeAddress}}</span>
                     <span class="distance">{{order.distance}}</span>
-                    <span class="map">查看地图</span>
+                    <span @click="getMap" class="map">查看地图</span>
                 </div>
             </el-col>
         </el-row>
@@ -159,6 +159,19 @@
                 </section>
             </el-col>
         </el-row>
+            <el-dialog
+            :title="order.consigneeName+' 的订单路线'"
+            :visible.sync="dialogVisible"
+            width="600px"
+            height="800px">
+                <el-row v-loading="loading">
+                    <div :id="'map'+order.id" class="map" style="border:1px solid rgba(20,100,230,0.8)"></div>
+                </el-row>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="goCenter">取 消</el-button>
+                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                </span>
+            </el-dialog>
     </div>
 </div>
 
@@ -166,12 +179,15 @@
 
 <script>
 import formatDate from '@/utils/date.js'
+
+import AMapLoader from '@amap/amap-jsapi-loader';
+
+
 export default {
     name:'',
     components: {},
     filters:{
         formatDate(time,fm) {
-            console.log(fm)
             fm = fm?fm:"yyyy-MM-dd hh:mm";
             let date = new Date(time)
             return formatDate( fm ,date);
@@ -186,19 +202,86 @@ export default {
     props:["order"],
     data() {
         return {
+            loading:true,
+            qishouPosition: [116.435559, 39.87021],
+            originPoint:[116.397933,39.844818],
+            endPoint:[116.440655,39.878694],
+            thismap:{},
+            dialogVisible: false,
             timelinestate:false,
             productionstate:false,
         };
     },
-    computed: {},
-    watch: {},
+    computed: {
+    },
+    watch: {
+    },
     methods: {
-        toggleTimeline:function(){
-            
+        goCenter:function(){
+            console.log(this.thismap)
+            this.thismap.setFitView();
+        },
+        getMap:function(){
+            this.dialogVisible=true
+            var _this = this
+            AMapLoader.load({
+                "key": "39ccdca2d63e032c438afe48559bbea3",              // 申请好的Web端开发者Key，首次调用 load 时必填
+                "version": "1.4.15",   // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+                "plugins": ["AMap.Riding","AMap.Icon","AMap.Size"],           // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+                "AMapUI": {             // 是否加载 AMapUI，缺省不加载
+                    "version": '1.1',   // AMapUI 缺省 1.1
+                    "plugins":[],       // 需要加载的 AMapUI ui插件
+                },
+                "Loca":{                // 是否加载 Loca， 缺省不加载
+                    "version": '1.3.2'  // Loca 版本，缺省 1.3.2
+                },
+            }).then((AMap)=>{
+                var id = "map" + _this.order.id
+                var thismap = new AMap.Map(id, {
+                center:[(_this.originPoint[0]+_this.endPoint[0])/2,(_this.originPoint[1]+_this.endPoint[1])/2],
+                zoom: 14
+            });
+                var m3 = new AMap.Marker({
+                    position:_this.qishouPosition,
+                    icon: new AMap.Icon({
+                        size:new AMap.Size(40,40),
+                        image: require('../../assets/images/qishou.png'),
+                        imageSize: new AMap.Size(40, 40),
+                        anchor: 'center',
+                    })
+                });
+                thismap.add(m3)
+                var ridingOption = {
+                    map: thismap,
+                    // panel: "panel",
+                    policy: 1,
+                    hideMarkers: false,
+                    isOutline: true,
+                    outlineColor: '#ffeeee',
+                    autoFitView: true
+                }
+                var riding = new AMap.Riding(ridingOption)
+                //根据起终点坐标规划骑行路线
+                riding.search(_this.originPoint,_this.endPoint, function(status, result) {
+                    // result即是对应的公交路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_RidingResult
+                    if (status === 'complete') {
+                        console.log('骑行路线数据查询成功')
+                        _this.loading= false
+                    } else {
+                        console.log('骑行路线数据查询失败' + result)
+                    }
+                });
+                thismap.on('complete',function(){
+                    _this.loading= false
+                })
+            }).catch(e => {
+                console.log(e);
+            })
         }
     },
     created() {},
     mounted() {
+
     },
     beforeCreate() {},
     beforeMount() {},
@@ -210,6 +293,10 @@ export default {
 }
 </script>
 <style lang='less'  scoped>
+.map{
+    width: 100%;
+    height: 600px;
+}
 .order{
     margin-top: 20px;
     border-radius: 6px;

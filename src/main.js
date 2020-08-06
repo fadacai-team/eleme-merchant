@@ -48,10 +48,11 @@ import {
   Option,
   PageHeader,
   DatePicker,
-  
+  Dialog,
   badge,
   rate,
-  tag
+  tag,
+  Loading
 } from 'element-ui';
 
 Vue
@@ -93,10 +94,15 @@ Vue
   .use(badge)
   .use(rate)
   .use(tag)
+  .use(Dialog)
+  .use(Loading)
 
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
+
+
+
 new Vue({
   router,
   store,
