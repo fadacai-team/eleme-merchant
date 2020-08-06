@@ -131,11 +131,13 @@ export default {
     const that = this;
     window.onresize = () => {
       let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-      if (w < 960) {
+      if (w < 1160) {
         that.isCollapse = true;
+        this.$store.state.menuWidth = "75px";
       }
-      if (w >= 960) {
+      if (w >= 1160) {
         that.isCollapse = false;
+        this.$store.state.menuWidth = "200px";
       }
     };
   },
