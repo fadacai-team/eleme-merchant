@@ -64,7 +64,7 @@
                             </div>
                         </li>
 <transition name="timeline">
-                        <div id="timeline-wraper" v-show="!timelinestate" >
+                        <div id="timeline-wraper" v-show="timelinestate" >
                             <li   class="el-timeline-item" v-for="(item,index) in order.distTraceView.timeLines" :key="index">
                                 <div class="el-timeline-item__tail"></div>
                                 <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
@@ -75,8 +75,8 @@
                             </li>
                         </div>
 </transition>
-                <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
-                <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
+                <el-button v-if="timelinestate" @click="timelinestate=!timelinestate" type="text" class="open-btn">合并</el-button>
+                <el-button v-else @click="timelinestate=!timelinestate" type="text" class="open-btn">展开</el-button>
                     </ul>
                 </div>
 
@@ -89,22 +89,31 @@
                 <i class="el-icon-shopping-bag-1"></i>
             </el-col>
             <el-col class="clearfix" :span="23">
-                <div>{{order.goodsSummary}}</div>
+                <div style="font-size:16px;font-weight:700;">{{order.goodsSummary}}</div>
                 <el-row class="items" v-for="group in order.newGroups" :key="group.type">
-                    <section v-for="item in group.items" :key="item.vfoodId">
-                        <el-col :span="8" class="name">{{item.name}}</el-col>
-                        <el-col :span="14" class="count">x{{item.quantity}}</el-col>
-                        <el-col :span="2" class="price">{{parseFloat(item.price).toFixed(2)}}</el-col>
-                    </section>
+<transition name="productions">
+                    <div id="productions-wrapper" v-show="productionstate">
+                        <section v-for="item in group.items" :key="item.vfoodId">
+                            <el-col :span="8" class="name">{{item.name}}</el-col>
+                            <el-col :span="14" class="count">x{{item.quantity}}</el-col>
+                            <el-col :span="2" class="price">{{parseFloat(item.price).toFixed(2)}}</el-col>
+                        </section>
+                    </div>
+</transition>
+                <el-button v-if="productionstate" @click="productionstate=!productionstate" type="text" class="open-btn">合并</el-button>
+                <el-button v-else @click="productionstate=!productionstate" type="text" class="open-btn">展开</el-button>
 
                 </el-row>
                 <el-divider></el-divider>
                 <section :span="8" class="other">
+
                     <section>
                         <header class="title">其他</header>
                         <el-col :span="8" class="name">配送费</el-col>
                         <el-col :span="16" class="price">{{order.deliveryFee | formatMoney}}</el-col>
                     </section>
+
+                    
                 </section>
                 <section :span="8" class="onsale">
                     <header class="title">优惠</header>
@@ -177,8 +186,8 @@ export default {
     props:["order"],
     data() {
         return {
-            timelineShow:false,
-            timelinestate:true,
+            timelinestate:false,
+            productionstate:false,
         };
     },
     computed: {},
@@ -260,9 +269,6 @@ export default {
                 .order-position{
                     .tip{
                         margin-left: 0;
-                    }
-                    .distance{
-
                     }
                     .map{
                         color:#4e8cfa;
@@ -360,16 +366,25 @@ export default {
     
 }
 
-#timelin-wraper{
-    overflow: hidden;
-}
-.timeline-enter-active,.timeline-leave-active{
-    max-height: 600px;
+#timeline-wraper{
     overflow: hidden;
     transition: all .5s ease-in-out;
 }
+.timeline-enter-active,.timeline-leave-active{
+    max-height: 600px;
+}
 .timeline-enter,.timeline-leave-to{
     max-height: 0px;
+}
+
+#productions-wrapper{
     overflow: hidden;
+    transition: all .5s ease-in-out;
+}
+.productions-enter-active,.productions-leave-active{
+    max-height: 600px;
+}
+.productions-enter,.productions-leave-to{
+    max-height: 0px;
 }
 </style>
