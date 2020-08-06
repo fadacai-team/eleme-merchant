@@ -4,21 +4,27 @@
     <div>
         <h3>流量转化</h3>
         <el-tabs   v-model="activeFatherZh">
-            <el-tab-pane label="用户管理" name="first">
-                <div>
-                    
-                    <el-tabs type="card"  v-model="activeSonZh">
-                        <el-tab-pane v-for="(item,index) in user" :label="item.label" :name="item.name" :key="index+item.name"><flowuserzh :arrData="item.userArr"></flowuserzh></el-tab-pane>
-                    </el-tabs>
-                </div>
+            <el-tab-pane label="全部顾客" name="0">
+                <el-tabs type="card"  v-model="activeSonZh">
+                    <el-tab-pane v-for="(item,index) in flowZh[0].bottomLabel" :label="item" :name="index+''" :key="item"></el-tab-pane>
+                </el-tabs>
+                <flowuserzh :arrData="flowZh[0].flowZhArr[activeSonZh].userArr"></flowuserzh>
             </el-tab-pane>
-            <el-tab-pane label="配置管理" name="second">新老客</el-tab-pane>
+
+
+            <el-tab-pane label="新顾客" name="1">
+                <el-tabs type="card"  v-model="activeSonZh">
+                    <el-tab-pane v-for="(item,index) in flowZh[1].bottomLabel" :label="item" :name="index+''" :key="item"></el-tab-pane>
+                </el-tabs>
+                <flownewuser></flownewuser>
+            </el-tab-pane>
         </el-tabs>
     </div>
 
 
     <div>
         <h3>流量趋势</h3>
+        <!-- 初始写法 -->
         <!-- <el-tabs   v-model="activeFatherQs" type="card">
                 <el-tab-pane v-for="item in flowQs" :key="item.name" :label="item.label" :name="item.name" >
                     <el-tabs v-model="activeSonQs">
@@ -29,32 +35,33 @@
                     </el-tabs>
                 </el-tab-pane>
         </el-tabs> -->
-        <el-tabs v-model="a">
-            <el-tab-pane name="0" label="今天"></el-tab-pane>
+        <el-tabs v-model="activeFatherQs">
+            <el-tab-pane v-for="(item,index) in flowQs" :name="index+''" :label="item.label" :key="item.name"></el-tab-pane>
+            <!-- 第一次优化 -->
+            <!-- <el-tab-pane name="0" label="今天"></el-tab-pane>
             <el-tab-pane name="1" label="每天"></el-tab-pane>
             <el-tab-pane name="2" label="每周"></el-tab-pane>
-            <el-tab-pane name="3" label="每月"></el-tab-pane>
+            <el-tab-pane name="3" label="每月"></el-tab-pane> -->
         </el-tabs>
-        <el-tabs v-model="b">
-            <el-tab-pane name="0" label="访问人数"></el-tab-pane>
+        <el-tabs v-model="activeSonQs">
+            <!-- <el-tab-pane name="0" label="访问人数"></el-tab-pane>
             <el-tab-pane name="1" label="下单人数"></el-tab-pane>
-            <el-tab-pane name="2" label="下单率"></el-tab-pane>
+            <el-tab-pane name="2" label="下单率"></el-tab-pane> -->
+            <!-- 第二次优化 -->
+            <el-tab-pane v-for="(item,index) in flowQs[0].bottomLabel" :name="index+''" :label="item" :key="item"></el-tab-pane>
         </el-tabs>
-        <flowqs :flowqs.sync="flowQs[a].flowQsArr[b].data" :isPersent="flowQs[a].flowQsArr[b].isPersent" :xAxis="flowQs[a].xAxis"></flowqs>
+        <flowqs :flowqs.sync="flowQs[activeFatherQs].flowQsArr[activeSonQs].data" :isPersent="flowQs[activeFatherQs].flowQsArr[activeSonQs].isPersent" :xAxis="flowQs[activeFatherQs].xAxis"></flowqs>
     </div>
 
     <div>
         <h3>流量分布</h3>
         <el-tabs   v-model="activeFatherFb" type="card">
-                <el-tab-pane v-for="item in flowFb" :key="item.name" :label="item.label" :name="item.name" >
-                    <el-tabs v-model="activeSonFb" >
-                        <el-tab-pane v-for="data in item.flowFbArr" :key="data.name1" :label="data.label1" :name="data.name1">
-                            <flowfb :flowfb="data.data" :axis="data.Axis"></flowfb>
-                        </el-tab-pane>
-                        
-                    </el-tabs>
-                </el-tab-pane>
+                <el-tab-pane v-for="(item,index) in flowFb" :key="item.name" :label="item.label" :name="index+''" ></el-tab-pane>
         </el-tabs>
+        <el-tabs v-model="activeSonFb" >
+            <el-tab-pane v-for="(item,index) in flowFb[0].bottomLabel" :key="item" :label="item" :name="index+''"></el-tab-pane>
+        </el-tabs>
+        <flowfb :flowfb.sync="flowFb[activeFatherFb].flowFbArr[activeSonFb].data" :axis="flowFb[activeFatherFb].flowFbArr[activeSonFb].Axis"></flowfb>
         
     </div>
 
@@ -67,25 +74,27 @@
 import flowuserzh from './flow/flow-zh-user'
 import flowqs from './flow/flow-qs'
 import flowfb from './flow/flow-Fb'
+import flownewuser from './flow/flow-zh-newuser'
 export default {
 //import引入的组件需要注入到对象中才能使用
-components: {flowuserzh,flowqs,flowfb},
+components: {flowuserzh,flowqs,flowfb,flownewuser},
 data() {
 //这里存放数据
     return {
-        a:0,
-        b:0,
-        activeFatherZh:'first',
-        activeSonZh:'first',
-        activeFatherQs:'first',
-        activeSonQs:'first',
-        activeFatherFb:'first',
-        activeSonFb:'first',
-        user:[
+        activeFatherZh:0,
+        activeSonZh:0,
+        activeFatherQs:0,
+        activeSonQs:0,
+        activeFatherFb:0,
+        activeSonFb:0,
+        flowZh:[
                 {
-                    name:'first',
-                    label:'今天实时',
-                    userArr:[
+                    bottomLabel:['今日实时','昨天','近七天','近30天'],
+                    flowZhArr:[
+                        {
+                            name:'first',
+                            label:'今天实时',
+                            userArr:[
                                 {
                                     name: "访问人数",
                                     mount: 9,
@@ -103,88 +112,95 @@ data() {
                                 },
                                 { name: "下单人数", mount: 2, time: "比前一周期", changeMount: 4,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
                                 { name: "下单转化率", mount: 22.2, time: "比前一周期", changeMount: 4,title: "下单人数/访问人数",},
-                        ],
-                },
-                {
-                    name:'second',
-                    label:'昨天',
-                    userArr:[
-                                {
-                                    name: "访问人数",
-                                    mount: 13,
-                                    time: "比上一周",
-                                    changeMount: 2,
-                                    title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                {
-                                    name: "下单次数",
-                                    mount: 3,
-                                    time: "比上一周",
-                                    changeMount: 1,
-                                    title:
-                                        "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                { name: "下单人数", mount: 3, time: "比上一周", changeMount: 1,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
-                                { name: "下单转化率", mount: 23.2, time: "比上一周", changeMount: 4.9,title: "下单人数/访问人数",},
-                        ],
-                },
-                {
-                    name:'third',
-                    label:'近7天',
-                    userArr:[
-                                {
-                                    name: "访问人数",
-                                    mount: 76,
-                                    time: "比前7日",
-                                    changeMount: 28,
-                                    title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                {
-                                    name: "下单次数",
-                                    mount: 28,
-                                    time: "比前前7日",
-                                    changeMount:8,
-                                    title:
-                                        "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                { name: "下单人数", mount: 24, time: "比前前7日", changeMount: 10,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
-                                { name: "下单转化率", mount: 31.6, time: "比前前7日", changeMount: 2.4,title: "下单人数/访问人数",},
                             ],
+                        },
+                        {
+                            name:'second',
+                            label:'昨天',
+                            userArr:[
+                                        {
+                                            name: "访问人数",
+                                            mount: 13,
+                                            time: "比上一周",
+                                            changeMount: 2,
+                                            title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        {
+                                            name: "下单次数",
+                                            mount: 3,
+                                            time: "比上一周",
+                                            changeMount: 1,
+                                            title:
+                                                "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        { name: "下单人数", mount: 3, time: "比上一周", changeMount: 1,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
+                                        { name: "下单转化率", mount: 23.2, time: "比上一周", changeMount: 4.9,title: "下单人数/访问人数",},
+                                ],
+                        },
+                        {
+                            name:'third',
+                            label:'近7天',
+                            userArr:[
+                                        {
+                                            name: "访问人数",
+                                            mount: 76,
+                                            time: "比前7日",
+                                            changeMount: 28,
+                                            title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        {
+                                            name: "下单次数",
+                                            mount: 28,
+                                            time: "比前前7日",
+                                            changeMount:8,
+                                            title:
+                                                "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        { name: "下单人数", mount: 24, time: "比前前7日", changeMount: 10,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
+                                        { name: "下单转化率", mount: 31.6, time: "比前前7日", changeMount: 2.4,title: "下单人数/访问人数",},
+                                    ],
+                        },
+                        {
+                            name:'fourth',
+                            label:'近30天',
+                            userArr:[
+                                        {
+                                            name: "访问人数",
+                                            mount: 225,
+                                            time: "比前30天",
+                                            changeMount: 66,
+                                            title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        {
+                                            name: "下单次数",
+                                            mount: 65,
+                                            time: "比前30天",
+                                            changeMount: 42,
+                                            title:
+                                                "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
+                                        },
+                                        { name: "下单人数", mount: 61, time: "比前30天", changeMount: 39,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
+                                        { name: "下单转化率", mount: 27.1, time: "比前30天", changeMount:13.3,title: "下单人数/访问人数",},
+                                    ],
+                        },
+                    ]
                 },
                 {
-                    name:'fourth',
-                    label:'近30天',
-                    userArr:[
-                                {
-                                    name: "访问人数",
-                                    mount: 225,
-                                    time: "比前30天",
-                                    changeMount: 66,
-                                    title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                {
-                                    name: "下单次数",
-                                    mount: 65,
-                                    time: "比前30天",
-                                    changeMount: 42,
-                                    title:
-                                        "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",
-                                },
-                                { name: "下单人数", mount: 61, time: "比前30天", changeMount: 39,title: "根据订单创建时间统计，本店或连锁店的有效订单完成数量；当前仅统计饿了么App、淘宝小程序、支付宝小程序；微信渠道的数据暂未统计。",},
-                                { name: "下单转化率", mount: 27.1, time: "比前30天", changeMount:13.3,title: "下单人数/访问人数",},
-                            ],
-                },
+                    label:'新顾客',
+                    bottomLabel:['昨天','近七天','近30天'],
+                    flowZhArr:[
+
+                    ]
+                }
         ],
         flowQs:[
             {
-                name:'first',
                 label:'今天实时',
+                bottomLabel:['访问人数','下单人数','下单转化率'],
                 xAxis:['00:00','02:00','04:00','06:00','08:00','10:00','12:00','14:00','16:00','18:00','20:00','22:00'],
                 flowQsArr:[
                     {
                         isPersent:false,
-                        name1:'first',
-                        label1:'访问人数',
                         data:{
                             myShop:[56,54,84,51,24,35,35,85,65,54,75,58,65,55],
                             sameShop:[120,98,130,140,150,112,96,98,124,132,147,123,124,130]
@@ -192,8 +208,6 @@ data() {
                     },
                     {
                         isPersent:false,
-                        name1:'second',
-                        label1:'下单人数',
                         data:{
                             myShop:[21,24,12,32,40,12,42,34,45,56,35,53,47,50],
                             sameShop:[120,98,130,140,150,112,96,98,124,132,147,123,124,130]
@@ -201,8 +215,6 @@ data() {
                     },
                     {
                         isPersent:true,
-                        name1:'third',
-                        label1:'下单转化率',
                         data:{
                             myShop:[24,25,24,12,13,14,24,25,14,12,13,14,19,23],
                             sameShop:[30,31,32,33,34,33,36,35,34,37,39,35,37,36]
@@ -211,13 +223,10 @@ data() {
                 ]
             },
             {
-                name:'second',
                 label:'每天累计',
                 xAxis:['07-21','07-22','07-23','07-24','07-25','07-26','07-27','07-28','07-29','07-30','07-31','08-01','08-02','08-03'],
                 flowQsArr:[
                     {
-                        name1:'first',
-                        label1:'访问人数',
                         isPersent:false,
                         data:{
                             myShop:[21,24,12,32,40,12,42,34,45,56,35,53,47,50],
@@ -226,8 +235,6 @@ data() {
 
                     },
                     {
-                        name1:'second',
-                        label1:'下单人数',
                         isPersent:false,
                         data:{
                             myShop:[2,3,5,6,5,7,9,12,13,5,17,9,8,14],
@@ -235,8 +242,6 @@ data() {
                         }
                     },
                     {
-                        name1:'third',
-                        label1:'下单转化率',
                         isPersent:true,
                         data:{
                             myShop:[5,6,4,3,5,6,5,7,8,9,2,5,6,4],
@@ -246,14 +251,11 @@ data() {
                 ]
             },
             {
-                name:'third',
                 label:'每周累计',
                 xAxis:['06/15-06/21','06/15-06/21','06/15-06/21','06/15-06/21','06/15-06/21','06/15-06/21','06/15-06/21'],
                 flowQsArr:[
                     {
                         isPersent:false,
-                        name1:'first',
-                        label1:'访问人数',
                         data:{
                             myShop:[123,124,125,156,145,153,145],
                             sameShop:[223,214,256,236,256,245,275]
@@ -261,8 +263,6 @@ data() {
                     },
                     {
                         isPersent:false,
-                        name1:'second',
-                        label1:'下单人数',
                         data:{
                             myShop:[10,17,16,35,25,26,30],
                             sameShop:[100,110,123,112,145,142,136]
@@ -270,8 +270,6 @@ data() {
                     },
                     {
                         isPersent:true,
-                        name1:'third',
-                        label1:'下单转化率',
                         data:{
                             myShop:[20,12,24,18,20,14,15],
                             sameShop:[30,32,34,38,30,34,35]
@@ -280,14 +278,11 @@ data() {
                 ]
             },
             {
-                name:'fourth',
                 label:'每月累计',
                 xAxis:['2020/02','2020/03','2020/04','2020/05','2020/06','2020/07','2020/08'],
                 flowQsArr:[
                     {
                         isPersent:false,
-                        name1:'first',
-                        label1:'访问人数',
                         data:{
                             myShop:[450,460,470,485,500,498,470],
                             sameShop:[650,660,670,685,600,698,670]
@@ -295,8 +290,6 @@ data() {
                     },
                     {
                         isPersent:false,
-                        name1:'second',
-                        label1:'下单人数',
                         data:{
                             myShop:[80,90,120,157,123,145,156],
                             sameShop:[180,190,220,257,223,245,256]
@@ -304,8 +297,6 @@ data() {
                     },
                     {
                         isPersent:true,
-                        name1:'third',
-                        label1:'下单转化率',
                         data:{
                             myShop:[12,20,23,31,34,21,22],
                             sameShop:[32,30,33,31,34,31,32]
@@ -316,8 +307,8 @@ data() {
         ],
         flowFb:[
             {
-                name:'first',
                 label:'昨天',
+                bottomLabel:['整体流量','自然流量','广告流量'],
                 flowFbArr:[
                     {
                         name1:'first',
