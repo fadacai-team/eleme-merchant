@@ -3,8 +3,8 @@
     <el-container>
       <el-header><Bar /></el-header>
       <el-container>
-        <el-aside width="200px"><Menu /></el-aside>
-        <el-main id="app-body">
+        <el-aside :width="this.$store.state.menuWidth"><Menu /></el-aside>
+        <el-main>
           <router-view />
         </el-main>
       </el-container>
@@ -29,18 +29,15 @@ export default {
 #app {
   font-size: 14px;
   color: #6c5f57;
-  min-width: 960px;
+  min-width: 1020px;
 }
-html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li{
+html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li,a{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 .clearfix {
   *zoom: 1;
-}
-em,i{
-  font-style: normal;
 }
 .clearfix:before,
 .clearfix:after {
@@ -49,6 +46,12 @@ em,i{
   height: 0;
   font-size: 0;
   content: "";
+}
+em,i{
+  font-style: normal;
+}
+b,strong{
+  font-weight: normal;
 }
 ul,ol,li{
   list-style: none;

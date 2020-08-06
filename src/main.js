@@ -62,6 +62,8 @@ import {
   Switch,
   Checkbox,
   CheckboxGroup,
+  Rate,
+  ButtonGroup
 } from 'element-ui';
 
 Vue
@@ -111,6 +113,9 @@ Vue
   .use(rate)
   .use(tag)
   .use(Loading)
+  .use(Rate)
+  .use(ButtonGroup)
+
 Vue.config.productionTip = false
 
 Vue.prototype.$loading = Loading.service;
@@ -120,7 +125,6 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
-
 
 Vue.config.productionTip = false
 

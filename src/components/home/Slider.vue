@@ -31,13 +31,7 @@ export default {
   methods: {
     gotoPage(index) {
       this.currentIndex = index;
-      console.log(this.currentIndex);
     },
-    // runInv() {
-    //   this.timer = setInterval(() => {
-    //     this.gotoPage(this.nextIndex);
-    //   }, 1000);
-    // }
   },
   mounted:function(){
     this.timer = setInterval(() => {
@@ -46,3 +40,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.slider{
+    width: 230px;
+}
+</style>
