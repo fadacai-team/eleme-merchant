@@ -50,6 +50,9 @@ html,body,footer,div,p,section,span,i,em,h1,h2,h3,h4,h5,h6,header,img,ul,ol,li,a
 em,i{
   font-style: normal;
 }
+b,strong{
+  font-weight: normal;
+}
 ul,ol,li{
   list-style: none;
 }
