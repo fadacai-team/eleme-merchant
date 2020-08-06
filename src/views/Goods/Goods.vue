@@ -8,7 +8,11 @@
 export default {
     name:'Goods',
     components: {},
-    data() {},
+    data() {
+      return{
+        
+      }
+    },
     computed: {},
     watch: {},
     methods: {},
