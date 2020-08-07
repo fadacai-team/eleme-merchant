@@ -60,7 +60,7 @@
                             <div class="el-timeline-item__node el-timeline-item__node--normal el-timeline-item__node--"></div>
                             <div class="el-timeline-item__wrapper">
                                 <div class="el-timeline-item__timestamp is-bottom">{{ order.settledTime | formatDate("mm:ss") }}</div>
-                                <div class="el-timeline-item__content"> {{order.statusForPrint}} </div>
+                                <div class="el-timeline-item__content"> {{order.orderLatestStatus}} </div>
                             </div>
                         </li>
 <transition name="timeline">
@@ -274,7 +274,7 @@ export default {
                 center:[(_this.originPoint[0]+_this.endPoint[0])/2,(_this.originPoint[1]+_this.endPoint[1])/2],
                 zoom: 14
             });
-            var m3 = new AMap.Marker({
+            var qishou = new AMap.Marker({
                 position:_this.qishouPosition,
                 icon: new AMap.Icon({
                     size:new AMap.Size(40,40),
@@ -283,7 +283,7 @@ export default {
                     anchor: 'center',
                 })
             });
-            _this.thismap.add(m3)
+            _this.thismap.add(qishou)
             var ridingOption = {
                 map: _this.thismap,
                 // panel: "panel",
@@ -296,11 +296,15 @@ export default {
             var riding = new AMap.Riding(ridingOption)
             //根据起终点坐标规划骑行路线
             riding.search(
-                // [_this.originPoint,_this.endPoint]
+
+                _this.originPoint,_this.endPoint
+                
                 [
                     {keyword: '西部硅谷 千峰教育',city:'深圳'},
                     {keyword: '后瑞村 四巷 渔乐圈',city:'深圳'}
-                ], function(status, result) {
+                ]
+
+                , function(status, result) {
                 if (status === 'complete') {
                     console.log('骑行路线数据查询成功')
                     _this.loading= false
