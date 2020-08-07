@@ -52,7 +52,7 @@ export default {
 <style lang="less" scoped>
 .flow-zh-user {
     width: 920px;
-    border: 1px solid #9d9999;
+    border: 1px solid #e6e4e4;
     height: 150px;
     display: flex;
     justify-content: space-evenly;

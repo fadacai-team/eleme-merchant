@@ -43,7 +43,7 @@ export default {
   components: {},
   data() {
     return {
-      isCollapse: false,
+      isCollapse: (document.documentElement.offsetWidth<1160 || document.body.offsetWidth<1160)?true:false,
       isRouter: true,
       menulist: [
         {
@@ -135,11 +135,13 @@ export default {
     const that = this;
     window.onresize = () => {
       let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-      if (w < 960) {
+      if (w < 1160) {
         that.isCollapse = true;
+        that.$store.state.menuWidth = "75px";
       }
-      if (w >= 960) {
+      if (w >= 1160) {
         that.isCollapse = false;
+        that.$store.state.menuWidth = "200px";
       }
     };
   },

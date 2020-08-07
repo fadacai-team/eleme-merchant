@@ -43,9 +43,12 @@ import {
   TabPane,
   Table,
   TableColumn,
-  DatePicker,
+  Option,
+  OptionGroup,
   Upload,
   Dialog,
+  DatePicker,
+  PageHeader
   
 } from 'element-ui';
 
@@ -82,15 +85,21 @@ Vue
   .use(TabPane)
   .use(Table)
   .use(TableColumn)
+  .use(Option)
+  .use(PageHeader)
   .use(DatePicker)
   .use(Upload)
   .use(Dialog)
   .use(AMap)
+  .use(OptionGroup)
 
 
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
+
+
+
 new Vue({
   router,
   store,

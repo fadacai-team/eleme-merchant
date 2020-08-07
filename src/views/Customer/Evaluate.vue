@@ -79,7 +79,7 @@ return {
         {username:'吴九',w:5,b:5,buy:"草莓冰沙-中杯，柠檬雪泡-中杯",isZan:false,evaTime:"2020-07-38 18:59",imgs:"头像10"},
         {username:'郑十',w:5,b:5,buy:"柠檬雪泡-中杯",isZan:false,evaTime:"2020-07-38 18:59",imgs:"头像8"},
     ]
-};
+}
 },
 //监听属性 类似于data概念
 computed: {},
