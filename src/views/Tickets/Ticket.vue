@@ -10,7 +10,7 @@
                 <div class="ticketMenu-item clear-float"  v-for="(item,index) in ticketMenu" :key="item.id+index" @click="changeRouter(item.router)">
                     <div class="dt"><img src="" alt="">图片</div>
                     <div class="dd">
-                        <div class="title">{{item.title}}</div>
+                        <div class="ticketMenu-title">{{item.title}}</div>
                         <div class="message">{{item.text}}</div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@ methods: {
        },
 
        changeRouter:function(code){
-           this.$router.push({code:code})
+           this.$router.push(code)
        }
 },
 //生命周期 - 创建完成（可以访问当前this实例）
@@ -366,6 +366,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
             border: 2px solid #E7EAEF;
             background-color: white;
             box-sizing: border-box;
+            z-index: 4;
            .ticketMenu-item {
                cursor: pointer;
                margin-bottom: 10px;
@@ -383,7 +384,7 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
                 float: right;
                 width: 160px;
 
-                .title {
+                .ticketMenu-title {
                     font-size: 14px;
                     margin-bottom: 5px;
                 }
