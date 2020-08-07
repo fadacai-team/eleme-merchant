@@ -37,20 +37,17 @@
         </el-tabs> -->
         <el-tabs v-model="activeFatherQs" type="card">
             <el-tab-pane v-for="(item,index) in flowQs" :name="index+''" :label="item.label" :key="item.name"></el-tab-pane>
-            <!-- 第一次优化 -->
-            <!-- <el-tab-pane name="0" label="今天"></el-tab-pane>
-            <el-tab-pane name="1" label="每天"></el-tab-pane>
-            <el-tab-pane name="2" label="每周"></el-tab-pane>
-            <el-tab-pane name="3" label="每月"></el-tab-pane> -->
+            
         </el-tabs>
         <el-tabs v-model="activeSonQs">
-            <!-- <el-tab-pane name="0" label="访问人数"></el-tab-pane>
-            <el-tab-pane name="1" label="下单人数"></el-tab-pane>
-            <el-tab-pane name="2" label="下单率"></el-tab-pane> -->
-            <!-- 第二次优化 -->
+        
             <el-tab-pane v-for="(item,index) in flowQs[0].bottomLabel" :name="index+''" :label="item" :key="item"></el-tab-pane>
         </el-tabs>
-        <flowqs :flowqs.sync="flowQs[activeFatherQs].flowQsArr[activeSonQs].data" :isPersent="flowQs[activeFatherQs].flowQsArr[activeSonQs].isPersent" :xAxis="flowQs[activeFatherQs].xAxis"></flowqs>
+        <flowqs 
+            :flowqs.sync="flowQs[activeFatherQs].flowQsArr[activeSonQs].data" 
+            :isPersent="flowQs[activeFatherQs].flowQsArr[activeSonQs].isPersent" 
+            :xAxis="flowQs[activeFatherQs].xAxis">
+        </flowqs>
     </div>
 
     <div>
