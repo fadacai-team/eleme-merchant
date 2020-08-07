@@ -26,7 +26,9 @@
       </div>
       <div class="other">
         <a href="#">
-          <i class="el-icon-bell"></i>
+          <el-badge is-dot class="item">
+            <i class="el-icon-bell" style="height:16px;"></i>
+          </el-badge>  
         </a>
         <a href="#">
           <i class="el-icon-question"></i>
@@ -47,12 +49,10 @@
 <style lang="scss" scoped>
 .bar {
   height: 61px;
-  border-bottom: 1px solid #e4e7ed;
   .bar-left {
     float: left;
     a {
       display: inline-block;
-      // font-size: 14px;
       width: 104px;
       height: 57px;
       text-align: center;
@@ -84,10 +84,16 @@
       line-height: 60px;
       a {
         padding: 0 10px;
+        position: relative;
       }
       ul {
+        background: #fff;
+        top: 40px;
+        width: 100px;
+        position: absolute;
         display: none;
         border: 1px solid #e4e7ed;
+        border-top:none ;
         li {
           line-height: 30px;
           margin-left: -13px;
@@ -98,9 +104,12 @@
       display: block;
     }
     .other {
+      height: 60px;
       float: left;
-      line-height: 60px;
+      display: table;
       a {
+        display: table-cell;
+        vertical-align:middle;
         font-size: 16px;
         padding: 0 12px;
         color: #777779;

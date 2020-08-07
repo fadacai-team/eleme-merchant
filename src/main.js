@@ -11,9 +11,9 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/legendScroll'
-
+import printJS from 'print-js'
 Vue.component('v-echart', ECharts)
-// element-ui
+
 import {
   Button, 
   Select,
@@ -35,11 +35,38 @@ import {
   Timeline,
   TimelineItem,
   Input,
+  Radio,
+  RadioButton,
+  RadioGroup,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Calendar,
   Tabs,
   TabPane,
   Table,
-  TableColumn
+  TableColumn,
+  Option,
+  OptionGroup,
+  Upload,
+  Dialog,
+  DatePicker,
+  Loading,
+  Badge,
+  MessageBox,
+  Message,
+  Notification,
+  PageHeader,
+  rate,
+  tag,
+  Switch,
+  Checkbox,
+  CheckboxGroup,
+  Rate,
+  ButtonGroup,
+  Tooltip
 } from 'element-ui';
+
 Vue
   .use(Input)
   .use(Button)
@@ -62,14 +89,51 @@ Vue
   .use(Timeline)
   .use(TimelineItem)
   .use(Input)
+  .use(Radio)
+  .use(RadioButton)
+  .use(RadioGroup)
+  .use(Dropdown)
+  .use(DropdownItem)
+  .use(DropdownMenu)
+  .use(Calendar)
   .use(Tabs)
   .use(TabPane)
   .use(Table)
   .use(TableColumn)
+  .use(Option)
+  .use(PageHeader)
+  .use(DatePicker)
+  .use(Badge)
+  .use(Upload)
+  .use(Dialog)
+  .use(OptionGroup)
+  .use(Switch)
+  .use(Checkbox)
+  .use(CheckboxGroup,)
+  .use(Loading.directive)
+  .use(rate)
+  .use(tag)
+  .use(Loading)
+  .use(Rate)
+  .use(ButtonGroup)
+  .use(Tooltip)
+
+Vue.config.productionTip = false
+
+Vue.prototype.$loading = Loading.service;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$alert = MessageBox.alert;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
 
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
+
+
+
 new Vue({
   router,
   store,

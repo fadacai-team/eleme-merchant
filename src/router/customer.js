@@ -1,12 +1,17 @@
 export default[
-    // {
-    //     path: '/xxx',
-    //     component: () => import ('../views/xxx/xxx.vue'),
-    //     name: 'Production',
-    // },
-    // {
-    //     path: '/xxx',
-    //     component: () => import ('../views/xxx/xxx.vue'),
-    //     name: 'Production',
-    // }
+    {
+        path: '/customer/analyze',
+        component: () => import ('../views/Customer/Analyze.vue'),
+        name: 'analyze',
+    },
+    {
+        path: '/customer/behavior',
+        component: () => import ('../views/Customer/Behavior.vue'),
+        name: 'behavior',
+    },
+    {
+        path: '/customer/evaluate',
+        component: () => import ('../views/Customer/Evaluate.vue'),
+        name: 'evaluate',
+    }
 ]

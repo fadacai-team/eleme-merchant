@@ -43,7 +43,7 @@ export default {
   components: {},
   data() {
     return {
-      isCollapse: false,
+      isCollapse: (document.documentElement.offsetWidth<1160 || document.body.offsetWidth<1160)?true:false,
       isRouter: true,
       menulist: [
         {
@@ -73,13 +73,17 @@ export default {
           name: "外卖券",
           router: "/ticket",
           icon: "el-icon-s-ticket",
-          childList: [{ name: "demo", router: "/goods/demo" }]
+          childList: [{ name: "外卖券管理", router: "/tickets/manage"}]
         },
         {
           name: "顾客",
           router: "/customer",
           icon: "el-icon-s-custom",
-          childList: [{ name: "demo", router: "/customer/demo" }]
+          childList: [
+              { name: "顾客分析", router: "/customer/analyze" },
+              { name: "顾客画像", router: "/customer/behavior" },
+              { name: "顾客评价", router: "/customer/evaluate" }
+            ]
         },
         {
           name: "营销",
@@ -87,7 +91,7 @@ export default {
           icon: "el-icon-s-marketing",
           childList: [
             {name:"营销中心",router:"/marketing/center"},
-            {name:"我的活动",router:"/marketin/activities"}
+            {name:"我的活动",router:"/marketing/activities"}
           ]
         },
         {
@@ -109,9 +113,9 @@ export default {
         },
         {
           name: "门店",
-          router: "/shop",
+          router: "/store",
           icon: "el-icon-s-shop",
-          childList: [{ name: "demo", router: "/shop/info" }]
+          childList: [{ name: "门店信息", router: "/store/info" }]
         }
       ]
     };
@@ -131,11 +135,13 @@ export default {
     const that = this;
     window.onresize = () => {
       let w = document.documentElement.offsetWidth || document.body.offsetWidth;
-      if (w < 960) {
+      if (w < 1160) {
         that.isCollapse = true;
+        that.$store.state.menuWidth = "75px";
       }
-      if (w >= 960) {
+      if (w >= 1160) {
         that.isCollapse = false;
+        that.$store.state.menuWidth = "200px";
       }
     };
   },
