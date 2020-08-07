@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="footer">
-      <el-button >取消</el-button>
-      <el-button type="primary" >保存</el-button>
+      <el-button @click="backRouter">取消</el-button>
+      <el-button type="primary" @click="saveType">保存</el-button>
     </div>
   </div>
 </template>
@@ -41,7 +41,6 @@ export default {
   components: {},
   data() {
     return {
-      
       input:"",
       textarea:""
     }
@@ -49,6 +48,18 @@ export default {
   methods: {
     backRouter(){
       this.$router.go(-1);
+    },
+    saveType(){
+      let len = this.$store.state.goodsTypeList.length;
+      
+      if (this.input!="") {
+        this.$store.state.goodsTypeList.push({
+          id:len+1,
+          name:this.input,
+          desc:this.textarea,
+        })
+        this.backRouter()
+      }
     }
   },
 }

@@ -4,16 +4,16 @@
     <div class="goods-tab">
       <el-tabs v-model="activeName">
         <el-tab-pane :label="'全部商品('+this.$store.state.goodsList.length+')'" name="全部商品">
-          <GoodsTypeList :typeList="allTypeList"/>
+          <GoodsTypeList :dataSource="allTypeList"/>
         </el-tab-pane>
         <el-tab-pane :label="'库存不足('+repertoryList.length+')'" name="库存不足">
-          <GoodsTypeList :typeList="repertoryTypeList"/>
+          <GoodsTypeList :dataSource="repertoryTypeList"/>
         </el-tab-pane>
         <el-tab-pane :label="'已下架('+underCarriageList.length+')'" name="已下架">
-          <GoodsTypeList :typeList="underCarriageTypeList"/>
+          <GoodsTypeList :dataSource="underCarriageTypeList"/>
         </el-tab-pane>
         <el-tab-pane :label="'待上架('+beforeGroundList.length+')'" name="待上架">
-          <GoodsTypeList :typeList="beforeGroundTypeList"/>
+          <GoodsTypeList :dataSource="beforeGroundTypeList"/>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -79,17 +79,7 @@ export default {
         });
         return beforeGroundTypeList;
       },
-    },
-    watch: {},
-    created() {},
-    mounted() {},
-    beforeCreate() {},
-    beforeMount() {},
-    beforeUpdate() {},
-    updated() {},
-    beforeDestroy() {},
-    destroyed() {},
-    activated() {},
+    }
 }
 </script>
 <style lang='scss'  scoped>

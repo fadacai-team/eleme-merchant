@@ -49,7 +49,12 @@
 <script>
 export default {
   name:"showGoods",
-  props:["itemList"],
+  props:["dataSource"],
+  data(){
+    return {
+      itemList : []
+    }
+  },
   computed:{
     isAllChecked: {
       get: function() {
@@ -89,6 +94,17 @@ export default {
     },
     deleteGood(index){
       this.$store.state.goodsList.splice(index, 1);
+    }
+  },
+  mounted(){
+    this.itemList = this.dataSource
+  },
+  watch:{
+    dataSource:{
+      deep:true,
+      handler(val){
+        this.itemList = val
+      }
     }
   }
 }

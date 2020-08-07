@@ -5,7 +5,7 @@
         <div class="header">
           <div class="operate">
             <el-button-group>
-              <el-button size="small" @click="grounding(item)">上架</el-button>
+              <el-button size="small" @click="grounding">上架</el-button>
               <el-button size="small" @click="underCarriage">下架</el-button>
               <el-button size="small" @click="deleteGoods">删除</el-button>
             </el-button-group>
@@ -15,7 +15,7 @@
             <router-link to="/goods/newgood" class="link">新建商品</router-link>
           </div>
         </div>
-        <showGoods :itemList="item.itemList"/>
+        <showGoods :dataSource="item.itemList"/>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -27,10 +27,11 @@ export default {
   components:{
     showGoods,
   },
-  props:["typeList"],
+  props:{dataSource:Array},
   data(){
     return{
-      activeName:this.typeList[0].name
+      activeName:this.dataSource[0].name,
+      typeList:[]
     }
   },
   methods:{
@@ -50,6 +51,18 @@ export default {
     },
     deleteGoods(){
       this.$store.state.goodsList = this.$store.state.goodsList.filter(item=>item.isChecked == false)  
+    }
+  },
+  mounted(){
+    this.typeList = this.dataSource
+  },
+  watch:{
+    dataSource:{
+      deep:true,
+      handler(val){
+        
+        this.typeList = val
+      }
     }
   }
 }
