@@ -63,7 +63,8 @@ import {
   Checkbox,
   CheckboxGroup,
   Rate,
-  ButtonGroup
+  ButtonGroup,
+  Tooltip
 } from 'element-ui';
 
 Vue
@@ -115,6 +116,7 @@ Vue
   .use(Loading)
   .use(Rate)
   .use(ButtonGroup)
+  .use(Tooltip)
 
 Vue.config.productionTip = false
 

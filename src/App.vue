@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header><Bar /></el-header>
+      <el-header ><Bar /></el-header>
       <el-container>
-        <el-aside :width="this.$store.state.menuWidth"><Menu /></el-aside>
-        <el-main>
+        <el-aside :width="this.$store.state.menuWidth" id="left-nav"><Menu /></el-aside>
+        <el-main id="app-body">
           <router-view />
         </el-main>
       </el-container>
@@ -67,4 +67,10 @@ input {
   height: calc(100vh - 60px);
   overflow-y: scroll;
 }
+#left-nav{
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 </style>

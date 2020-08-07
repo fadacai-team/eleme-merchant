@@ -165,12 +165,16 @@
             width="600px"
             height="800px">
                 <el-row v-loading="loading">
-                    <div :id="'map'+order.id" class="map" style="border:1px solid rgba(20,100,230,0.8)"></div>
+                    <div :id="'map'+order.id" class="map" style="border:1px solid rgba(20,100,230,0.8)">
+                    </div>
+                    <el-tooltip class="item" effect="dark" content="点击寻找骑手" placement="top-start">
+                            <el-button @click="goCenter" type="primary" icon="el-icon-position" circle style="position:absolute;bottom:10px;right:10px;"></el-button>
+                    </el-tooltip>
                 </el-row>
-                <span slot="footer" class="dialog-footer">
+                <!-- <span slot="footer" class="dialog-footer">
                     <el-button @click="goCenter">取 消</el-button>
                     <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-                </span>
+                </span> -->
             </el-dialog>
     </div>
 </div>
@@ -257,7 +261,7 @@ export default {
                 },
             }).then((AMap)=>{
                 var id = "map" + _this.order.id
-                var thismap = new AMap.Map(id, {
+                _this.thismap = new AMap.Map(id, {
                 center:[(_this.originPoint[0]+_this.endPoint[0])/2,(_this.originPoint[1]+_this.endPoint[1])/2],
                 zoom: 14
             });
@@ -270,35 +274,39 @@ export default {
                     anchor: 'center',
                 })
             });
-            thismap.add(m3)
-                var ridingOption = {
-                    map: thismap,
-                    // panel: "panel",
-                    policy: 1,
-                    hideMarkers: false,
-                    isOutline: true,
-                    outlineColor: '#ffeeee',
-                    autoFitView: true
-                }
-                var riding = new AMap.Riding(ridingOption)
-                //根据起终点坐标规划骑行路线
-                riding.search(_this.originPoint,_this.endPoint, function(status, result) {
-                    // result即是对应的公交路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_RidingResult
-                    if (status === 'complete') {
-                        console.log('骑行路线数据查询成功')
-                        _this.loading= false
-                    } else {
-                        console.log('骑行路线数据查询失败' + result)
-                    }
-                });
-                thismap.on('complete',function(){
+            _this.thismap.add(m3)
+            var ridingOption = {
+                map: _this.thismap,
+                // panel: "panel",
+                policy: 1,
+                hideMarkers: false,
+                isOutline: true,
+                outlineColor: '#ffeeee',
+                autoFitView: true
+            }
+            var riding = new AMap.Riding(ridingOption)
+            //根据起终点坐标规划骑行路线
+            riding.search(
+                // [_this.originPoint,_this.endPoint]
+                [
+                    {keyword: '西部硅谷 千峰教育',city:'深圳'},
+                    {keyword: '后瑞村 四巷 渔乐圈',city:'深圳'}
+                ], function(status, result) {
+                if (status === 'complete') {
+                    console.log('骑行路线数据查询成功')
                     _this.loading= false
-                })
-            }).catch(e => {
-                console.log(e);
+                } else {
+                    console.log('骑行路线数据查询失败' + result)
+                }
+            });
+            _this.thismap.on('complete',function(){
+                _this.loading= false
             })
-        }
-    },
+        }).catch(e => {
+            console.log(e);
+        })
+    }
+},
     created() {},
     mounted() {
     },
