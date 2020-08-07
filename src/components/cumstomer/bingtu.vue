@@ -24,13 +24,13 @@ return {
     legend: {
         orient: 'vertical',
         x: 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data:['新客户','老客户']
     },
     series: [
         {
             name:'访问来源',
             type:'pie',
-            radius: ['50%', '70%'],
+            radius: ['30%', '90%'],
             avoidLabelOverlap: false,
             label: {
                 normal: {
@@ -40,7 +40,7 @@ return {
                 emphasis: {
                     show: true,
                     textStyle: {
-                        fontSize: '30',
+                        fontSize: '10',
                         fontWeight: 'bold'
                     }
                 }
@@ -51,11 +51,9 @@ return {
                 }
             },
             data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
+                {value:335, name:'新客户'},
+                {value:310, name:'老客户'},
+               
             ]
         }
     ]
@@ -88,5 +86,12 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style lang='less' scoped>
-
+.echarts{
+    width: 40px;
+    height: 40px;
+    element.style {
+         width: 40px;
+    height: 40px;
+    }
+}
 </style>

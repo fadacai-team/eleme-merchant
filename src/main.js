@@ -4,6 +4,7 @@ import router from './router/index'
 import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
+import AMap from 'vue-amap';
 import  'echarts/lib/chart/line'
 import 'echarts/lib/chart/bar'
 import 'echarts/lib/chart/funnel'
@@ -12,6 +13,9 @@ import 'echarts/lib/component/title'
 import 'echarts/lib/component/legend'
 import 'echarts/lib/component/legendScroll'
 import printJS from 'print-js'
+import  'echarts/lib/chart/pie'
+import  'echarts/lib/chart/bar'
+Vue.prototype.$store = store
 Vue.component('v-echart', ECharts)
 
 import {
@@ -64,7 +68,8 @@ import {
   CheckboxGroup,
   Rate,
   ButtonGroup,
-  Tooltip
+  Tooltip,
+  
 } from 'element-ui';
 
 Vue
@@ -117,7 +122,9 @@ Vue
   .use(Rate)
   .use(ButtonGroup)
   .use(Tooltip)
+  .use(AMap)
 
+  
 Vue.config.productionTip = false
 
 Vue.prototype.$loading = Loading.service;
@@ -127,6 +134,8 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
+
+
 
 Vue.config.productionTip = false
 

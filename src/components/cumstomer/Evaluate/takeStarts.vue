@@ -5,7 +5,7 @@
             饿了么
         </div>
         <div class="dl">
-            <div class="dt">5.0</div>
+            <div class="dt">4.0</div>
             <div class="dd">
                 <div class="starts">
                     <span :class="['el-icon-star-on',{'active':grade1.score>=1}]"></span>
