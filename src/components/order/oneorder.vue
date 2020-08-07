@@ -299,10 +299,10 @@ export default {
 
                 _this.originPoint,_this.endPoint
                 
-                [
-                    {keyword: '西部硅谷 千峰教育',city:'深圳'},
-                    {keyword: '后瑞村 四巷 渔乐圈',city:'深圳'}
-                ]
+                // [
+                //     {keyword: '西部硅谷 千峰教育',city:'深圳'},
+                //     {keyword: '后瑞村 四巷 渔乐圈',city:'深圳'}
+                // ]
 
                 , function(status, result) {
                 if (status === 'complete') {
