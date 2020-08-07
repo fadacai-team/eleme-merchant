@@ -81,7 +81,7 @@ export default {
           icon: "el-icon-s-custom",
           childList: [
               { name: "顾客分析", router: "/customer/analyze" },
-              { name: "顾客画像", router: "/customer/behavior" },
+              // { name: "顾客画像", router: "/customer/behavior" },
               { name: "顾客评价", router: "/customer/evaluate" }
             ]
         },

@@ -10,6 +10,7 @@
        <div class="dd">
            <div class="username">
              {{userArr.username}}
+             <i class="el-icon-eleme"></i>
            </div>
            <div class="stars">
                <span :class="['el-icon-star-on',{'active':sumEva>=1}]"></span>
@@ -25,15 +26,21 @@
             <div class="buy">
                 购买了{{userArr.buy}}
             </div>
+            <div class="bestEva" v-show="sumEva==5">
+                <i class="el-icon-thumb"></i>
+                <span>
+                    {{userArr.buy}}
+                </span>
+            </div>
             <section>
 
             </section>
             <div class="bottom">
                 <div class="EvaTime">
-                    评价于 : {{userArr.evaTime}}
-                    
+                    评价于 : {{userArr.evaTime}} 
                 </div>
-                <b @click.stop="isHuifu=!isHuifu">回复顾客</b>
+               
+                <b @click.stop="isHuifu=!isHuifu" class="reponseCus">回复顾客</b>
                 <div :class="['aside',{'hidden':isHuifu}]" @click.stop="isHuifu=false">
                     <textarea name="" id="" cols="30" rows="10" :focus="huifu" v-model="response">
                     </textarea>
@@ -111,6 +118,8 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 <style lang='less' scoped>
 .user-evaluate {
     display: flex;
+    color: #98999B;
+    margin-bottom: 30px;
   .dt {
       width: 60px;
       height: 60px;
@@ -118,12 +127,13 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
       text-align: center;
       border:1px solid pink;
       border-radius: 50%;
-      margin-right: 10px;
+      margin-right: 20px;
   } 
 
   .dd {
     .username {
-
+        font-size: 16px;
+        color: black;
     }
 
     .stars {
@@ -141,6 +151,16 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     .buy {
         margin-top: 10px;
     }
+    .bestEva{
+    color: black;
+     cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+            i{
+                color: red;
+            }
+}
     .bottom{
         position: relative;
         display: flex;
@@ -148,11 +168,12 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
         align-items: center;
         .EvaTime{
             margin-right: 10px;
+            font-size: 12px;
+           
         }
         b{
             font-weight: 550;
             padding: 2px;
-            background-color: #CBCDC8;
             cursor: pointer;
         }
 
@@ -180,5 +201,8 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
     color: red;
 }.hidden{
     display: none;
+}
+.reponseCus{
+    color: black;
 }
 </style>

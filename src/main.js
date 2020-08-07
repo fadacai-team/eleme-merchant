@@ -4,6 +4,7 @@ import router from './router/index'
 import store from './store'
 import axios from './common/myaxios'
 import ECharts from 'vue-echarts'
+import AMap from 'vue-amap';
 import  'echarts/lib/chart/line'
 import  'echarts/lib/chart/pie'
 import  'echarts/lib/chart/bar'
@@ -84,6 +85,8 @@ Vue
   .use(DatePicker)
   .use(Upload)
   .use(Dialog)
+  .use(AMap)
+
 
 Vue.config.productionTip = false
 
@@ -93,3 +96,10 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+AMap.initAMapApiLoader({
+  // 高德key
+  key: '',
+  // 插件集合 （插件按需引入）
+  plugin: ['AMap.Geolocation']
+});

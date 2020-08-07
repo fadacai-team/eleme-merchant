@@ -1,14 +1,19 @@
 <!--  -->
 <template>
 <div class='order-location'>
+    <!-- 一级tabs -->
     <el-tabs type="card" v-model="activeFatherTabs">
 
-        <el-tab-pane v-for="(item,index) in location" :name="index+''" :label="item.label" :key="item.name"></el-tab-pane>
+        <el-tab-pane v-for="(item,index) in location" :name="index+''" :label="item.label" :key="item.name">
+
+        </el-tab-pane>
         </el-tabs>
+    <!-- 二级tabs -->
     <el-tabs v-model="activeSonTabs">
 
          <el-tab-pane v-for="(item,index) in location[0].bottomLabel" :name="index+''" :label="item" :key="item"></el-tab-pane>
     </el-tabs>
+
     <section>
         <div class="title">
             <b>排名</b>
@@ -16,9 +21,14 @@
             <b>顾客</b>
             <b>客单价</b>
         </div>
-         <LocationPlace :location.sync="location[activeFatherTabs].dataArr[activeSonTabs].data" :isPersent="location[activeFatherTabs].dataArr[activeSonTabs].isPersent" ></LocationPlace>
+        <!-- 组件 -->
+        <div class="buttom">
+            <div class="left">
+                 <LocationPlace :location.sync="location[activeFatherTabs].dataArr[activeSonTabs].data"></LocationPlace>
+            </div>
 
-        
+           
+       </div>
     </section>
 </div>
 </template>
@@ -27,10 +37,12 @@
 //这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 //例如：import 《组件名称》 from '《组件路径》';
 import LocationPlace from "../../cumstomer/cumstomer/CusButton"
+
 export default {
 //import引入的组件需要注入到对象中才能使用
 components: {
     LocationPlace,
+    // Map
 },
 data() {
 //这里存放数据
@@ -45,7 +57,7 @@ return {
                 bottomLabel:["本店热门地段","商圈潜力地段"],
                 dataArr:[
                     {
-                        isPersent:false,
+                        
                         data:[
                             {  name:1,localName:"义务高层次人才创业园",count:3,price:23  },
                             {  name:2,localName:"义务高层次人才创业园",count:3,price:23  },
@@ -56,7 +68,7 @@ return {
                         ]                            
                     },
                     {
-                        isPersent:false,
+                     
                           data:[
                             {  name:1,localName:" 季宅1区",count:4,price:25  },
                             {  name:2,localName:"季宅1区",count:4,price:24  },
@@ -74,7 +86,7 @@ return {
                 label:"近7天",
                 dataArr:[
                     {
-                        isPersent:false,
+                     
                          data:[
                             {  name:1,localName:"义务高层次人才创业园",count:6,price:19  },
                             {  name:2,localName:"义务高层次人才创业园",count:6,price:19  },
@@ -86,7 +98,7 @@ return {
 
                     },
                     {
-                        isPersent:false,
+                        
                         data:[
                             {  name:1,localName:"季宅1区",count:8,price:30  },
                             {  name:2,localName:"季宅1区",count:8,price:30  },
@@ -104,7 +116,7 @@ return {
                 label:"近30天",
                 dataArr:[
                     {
-                        isPersent:false,
+                        
                         data:[
                             {  name:1,localName:"义务高层次人才创业园",count:26,price:18  },
                             {  name:2,localName:"义务高层次人才创业园",count:26,price:18  },
@@ -115,7 +127,7 @@ return {
                         ]
                     },
                     {
-                        isPersent:false,
+                        
                          data:[
                                 {  name:1,localName:"季宅1区",count:48,price:26  },
                                 {  name:2,localName:"季宅1区",count:48,price:26  },
@@ -163,5 +175,15 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 <style lang='less' scoped>
 .el-tabs--border-card>.el-tabs__header,#bck{
     background-color: white;
+}
+.title{
+
+}
+.bottom{
+  
+
+}
+.el-vue-amap-container, .el-vue-amap-container .el-vue-amap{
+    height: 100px;
 }
 </style>

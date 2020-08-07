@@ -29,14 +29,20 @@
             <dataTable :dataList="timeArr[3]" :dataCus="customer[3]" :mark="true" >
             </dataTable>
         </section>
-        <section> 
+        <div class="bottom">
+            <section> 
             <div class="title">
                 热门下单地段分布
             </div>
             <evaBottom>
 
             </evaBottom>
+            
         </section>
+        <section class="right">
+                <Map></Map>
+        </section>
+        </div>
       
     </div>
 </template>
@@ -44,11 +50,13 @@
 <script>
 import dataTable from "@/components/cumstomer/analyze"
 import evaBottom from "@/components/cumstomer/cumstomer/analuze-bottom"
+import Map from "@/components/cumstomer/cumstomer/map"
 export default {
     name:'',
     components: {
         dataTable,
         evaBottom,
+        Map,
     },
     data() {
         return {
@@ -94,10 +102,16 @@ export default {
                             
                 ],
                 [
-                    {id:1,name:'复购人数',count:'13',isUp:false,num:5,day:"比前7天"},
-                    {id:2,name:'新客复购',count:'8',isUp:false,num:2,day:"比前7天"},
+                    {id:1,name:'活跃顾客',count:'13',isUp:false,num:5,day:"比前7天"},
+                    {id:2,name:'沉默顾客',count:'8',isUp:false,num:2,day:"比前7天"},
+                    {id:3,name:'流失顾客',count:'5',isUp:false,num:3,day:"比前7天"},
+                    {id:3,name:'留存占比',count:'3',isUp:false,num:2,day:"比前7天",table:true},
+                ],
+                 [
+                    {id:1,name:'复购人数',count:'15',isUp:false,num:5,day:"比前7天"},
+                    {id:2,name:'新客复购',count:'10',isUp:false,num:2,day:"比前7天"},
                     {id:3,name:'老客复购',count:'5',isUp:false,num:3,day:"比前7天"},
-                    {id:3,name:'复购率',count:'3',isUp:false,num:2,day:"比前7天",table:true},
+                    {id:3,name:'复购率',count:'6',isUp:false,num:2,day:"比前7天",table:true},
                 ],
                
             ],
@@ -108,11 +122,11 @@ export default {
                         work:["1次","两次","三次","四次","五次及以上"]
                     },
                     {
-                        number:[3,2,1,4,5,1],
+                        number:[5,4,1,4,5,1],
                         work:["1次","两次","三次","四次","五次及以上"]
                     },
                     {
-                        number:[3,2,1,4,5,1],
+                        number:[3,2,3,4,5,1],
                         work:["1次","两次","三次","四次","五次及以上"]
                     },
             
@@ -179,6 +193,13 @@ export default {
                     outline: none;
                     border: none;
             }
+        }
+    }
+    .bottom{
+        display: flex;
+        section{
+            flex: 4;
+           
         }
     }
   

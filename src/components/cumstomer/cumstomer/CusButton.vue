@@ -1,12 +1,15 @@
 <!--  -->
 <template>
 <div class=''>
-    <li>
-        <div class="id">{{location.name}}</div>
-        <div class="placeName"></div>
+    <li v-for="(item,index) in location" :key="index">
+        <div class="id">{{item.name}}</div>
+        <div class="placeName">{{item.localName}}</div>
         <div class="customerCoun">
+            {{item.count}}
         </div>
-         <div class="price"></div>   
+         <div class="price">
+            {{item.price}}     
+        </div>   
 
     </li>
 </div>
@@ -40,7 +43,7 @@ created() {
 },
 //生命周期 - 挂载完成（可以访问DOM元素）
 mounted() {
-
+    console.log(this.location);
 },
 beforeCreate() {}, //生命周期 - 创建之前
 beforeMount() {}, //生命周期 - 挂载之前
@@ -52,5 +55,24 @@ activated() {}, //如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
 <style lang='less' scoped>
+    li {
+        display: flex;
+        width: 400px;
+        justify-content: space-around;
+  .id {
 
+  }
+
+  .placeName {
+
+  }
+
+  .customerCoun {
+
+  }
+
+  .price {
+
+  }
+}
 </style>
