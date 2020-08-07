@@ -23,7 +23,7 @@
             <el-col class="user-info clearfix" :span="23">
                 <div class="user-order">
                     <span class="un">{{order.consigneeName}}</span>·
-                    <span class="phone">查看手机号</span>
+                    <span class="phone" @click="getPhone">查看手机号</span>
                     <template v-for="(item, index) in order.userTips" >
                         ·<span :key="index" class="user-tip">{{item.content}}</span>
                     </template>
@@ -205,6 +205,7 @@ export default {
     props:["order"],
     data() {
         return {
+            phone:"156 6666 6666",
             loading:true,
             qishouPosition: [116.435559, 39.87021],
             originPoint:[116.397933,39.844818],
@@ -220,6 +221,14 @@ export default {
     watch: {
     },
     methods: {
+        getPhone() {
+            this.$alert(this.phone+"\n"+this.order.phoneAlertDescription, this.order.consigneeName+"的手机号", {
+                confirmButtonText: '确定',
+                callback: action => {
+                    
+                }
+            });
+        },
         getPrint:function(){
             this.timelinestate=true
             this.productionstate=true
