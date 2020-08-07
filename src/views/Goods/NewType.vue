@@ -30,7 +30,7 @@
     </div>
     <div class="footer">
       <el-button @click="backRouter">取消</el-button>
-      <el-button type="primary" @click="saveGood">保存</el-button>
+      <el-button type="primary" @click="saveType">保存</el-button>
     </div>
   </div>
 </template>
@@ -49,8 +49,9 @@ export default {
     backRouter(){
       this.$router.go(-1);
     },
-    saveGood(){
+    saveType(){
       let len = this.$store.state.goodsTypeList.length;
+      
       if (this.input!="") {
         this.$store.state.goodsTypeList.push({
           id:len+1,

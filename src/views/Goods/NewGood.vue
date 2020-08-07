@@ -14,7 +14,7 @@
       <div class="item">
         <span>商品分类*</span>
         <div class="input">
-          <el-select v-model="value" placeholder="请选择">
+          <el-select v-model="type" placeholder="请选择">
             <el-option
               v-for="item in this.$store.state.goodsTypeList"
               :key="item.id"
@@ -25,29 +25,35 @@
         </div>
       </div>
       <div class="item">
-        <span>商品名称</span>
+        <span>商品名称*</span>
         <div class="input">
-          <el-input v-model="good.name" placeholder="请输入内容"></el-input>
+          <el-input v-model="name" placeholder=""></el-input>
         </div>
       </div>
       <div class="item">
-        <span>商品价格</span>
+        <span>商品价格*</span>
         <div class="input">
-          <el-input v-model="input" placeholder="请输入内容"></el-input>
+          <el-input v-model="price" placeholder=""></el-input>
+        </div>
+      </div>
+      <div class="item">
+        <span>商品库存*</span>
+        <div class="input">
+          <el-input v-model="repertory" placeholder=""></el-input>
         </div>
       </div>
       <div  class="item">
         <span>商品图片</span>
         <div class="input">
-          <el-upload class="upload" action="https://jsonplaceholder.typicode.com/posts/">
+          <el-upload class="upload" action="#">
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
         </div>
       </div>   
     </div>
     <div class="footer">
-      <el-button >取消</el-button>
-      <el-button type="primary" >保存</el-button>
+      <el-button @click="backRouter">取消</el-button>
+      <el-button type="primary" @click="saveGood">保存</el-button>
     </div>
   </div>
 </template>
@@ -58,13 +64,32 @@ export default {
   components: {},
   data() {
     return {
-      value:"",
-      good:{}
+      type:"",
+      name:"",
+      price:"",
+      repertory:""
     }
   },
   methods: {
     backRouter(){
       this.$router.go(-1);
+    },
+    saveGood(){
+      let len = this.$store.state.goodsList.length;
+      if (this.input!="") {
+        this.$store.state.goodsList.push({
+          id:len+1,
+          name:this.name,
+          repertory:this.repertory,
+          price:this.price,
+          sales:0,
+          status:"待上架",
+          img:require("@/assets/home/serve1.jpg"),
+          type:this.type,
+          isChecked:false
+        })
+        this.backRouter()
+      }
     }
   },
 }
