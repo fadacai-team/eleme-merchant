@@ -65,7 +65,12 @@ computed: {
                             show:true,
                             formatter:(value)=>{
                                 return this.isPersent?value + " %": value;
-                            }
+                            },
+                            // formatter:function(value){
+                            //     console.log(this)
+                            //     return this.isPersent?value + " %": value;
+                            // },
+                            
                         }
                     },
                     series: [
